@@ -7,7 +7,7 @@ const express = require('express'),
 
 
 // SERVE STATIC FILES
-express.static(path.join(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public/')));
 
 // BASIC ROUTE
 app.get('/', function(req, res) {
