@@ -1,0 +1,8 @@
+'use strict';
+angular.module('entertainmentAtlas')
+    .controller('HomeCtrl', function($scope) {
+        var cartodb = window.cartodb;
+        window.onload = function() {
+            cartodb.createVis('map', 'http://documentation.carto.com/api/v2/viz/2b13c956-e7c1-11e2-806b-5404a6a683d5/viz.json');
+        };
+    });
