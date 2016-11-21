@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
+$DNAInfoBlackColor: #3E3E3B;
+header {
+    font-family: 'Titillium Web', sans-serif;
+    color: $DNAInfoBlackColor;
+    font-weight: 600;
+    height: 60px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
+    letter-spacing: .05em;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    margin-left: 10px;
+}
