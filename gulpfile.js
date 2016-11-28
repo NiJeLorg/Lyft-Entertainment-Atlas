@@ -1,14 +1,19 @@
 'use strict';
+if(!process.env.PORT) {
+  require('dotenv').config()
+}
 const gulp = require('gulp'),
     path = require('path'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
+    watch = require('gulp-watch'),
     nodemon = require('gulp-nodemon'),
     pug = require('gulp-pug'),
     paths = {
         sassDirectory: 'app/sass/**/*.scss',
         pugDirectory: ['!app/shared/**', 'app/**/*.pug'],
-        publicDirectory: './public/'
+        publicDirectory: './public/',
+        jsDirectory: 'public/js/**/*.js',
     };
 
 
@@ -37,6 +42,12 @@ gulp.task('nodemon', function() {
         });
 });
 
+gulp.task('watchJSFiles', function() {
+    gulp.src(paths.jsDirectory)
+        .pipe(browserSync.stream());
+});
+
+
 gulp.task('watch&reload', function() {
     browserSync.init(null, {
         proxy: 'http://localhost:3000',
@@ -45,8 +56,9 @@ gulp.task('watch&reload', function() {
     });
     gulp.watch(paths.sassDirectory, ['sass2css']);
     gulp.watch(paths.pugDirectory, ['pug2html']);
+    gulp.watch(paths.jsDirectory, ['watchJSFiles']);
 });
 
 
 gulp.task('build', ['pug2html', 'sass2css']);
-gulp.task('default', ['nodemon', 'build', 'watch&reload']);
+gulp.task('default', ['nodemon', 'build', 'watchJSFiles','watch&reload']);
