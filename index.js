@@ -1,8 +1,10 @@
 'use strict';
 // LOAD REQUIRED DEPENDENCIES //
+// TO DO: pm2 is having trouble with the prot number coming from process.env.PORT, so hardcodin$
 const express = require('express'),
     path = require('path'),
-    port = Number(process.env.PORT),
+    //port = Number(process.env.PORT),
+    port = Number(3000),
     app = express();
 
 
@@ -10,7 +12,7 @@ const express = require('express'),
 app.use(express.static(path.join(__dirname, '/public/')));
 
 // BASIC ROUTE
-app.get('/', function(req, res) {
+app.get('/atlas', function(req, res) {
     res.sendFile('index.html', {
         root: './public'
     });
