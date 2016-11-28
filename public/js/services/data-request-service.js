@@ -7,7 +7,7 @@ angular.module('entertainmentAtlas')
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: 'https://spreadsheets.google.com/feeds/list/1TEkUmfZqqdaHSJ1NXz4Dsx5H5sHFoWLF_PnhFNXkOqc/od6/public/values?alt=json'
+                url: 'https://spreadsheets.google.com/feeds/list/1UQDU57hHK7w9NQpu7u0yFrtac2Xgfkn1YfRSaUP6AsY/od6/public/values?alt=json'
             }).then(function success(resp) {
                 deferred.resolve(resp);
             }, function error(err) {
@@ -16,4 +16,4 @@ angular.module('entertainmentAtlas')
             return deferred.promise;
         };
         return service;
-    })
+    });

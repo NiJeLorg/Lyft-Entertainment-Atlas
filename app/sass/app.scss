@@ -1,23 +1,194 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 $DNAInfoBlackColor: #3E3E3B;
-header {
+$aboveMapZIndex:401;
+$marginFromTop: 120px;
+* {
     font-family: 'Titillium Web', sans-serif;
-    color: $DNAInfoBlackColor;
-    font-weight: 600;
+}
+
+// OVERIDE LIBRARIES STYLES //
+.leaflet-left .leaflet-control {
+    margin-left: 30px;
+    margin-top: $marginFromTop + 30px + 44px + 20px;
+}
+
+.modal {
+    background: rgba(46, 41, 37, .8)
+}
+
+.modal-backdrop {
+    background: none;
+}
+
+.modal-content {
+    border-radius: 2px;
+    border: none;
+    padding: 30px;
+    width: 600px;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+.modal-header {
+    padding: 0;
+    display: flex;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.brand-publisher {
+    top: 61px;
+    width: 100%;
     height: 60px;
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
-    letter-spacing: .05em;
-    font-size: 12px;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
+    z-index: $aboveMapZIndex;
 }
 
-header img {
+.brand-publisher-text {
+    color: $DNAInfoBlackColor;
+    font-weight: 600;
+    letter-spacing: .05em;
+    font-size: 12px;
+    margin: 0;
+}
+
+.brand-publisher .info-svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.brand-publisher .lyft-logo {
     margin-left: 10px;
 }
 
+.about-button {
+    top: $marginFromTop + 30px;
+    z-index: $aboveMapZIndex;
+    position: absolute;
+    left: 30px;
+}
+
+.about-button-parent .about-button {
+    background-color: #fc5158;
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 0 10px;
+    outline: none;
+    height: 44px;
+}
+
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.vertical-align-center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-header h4 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-header i {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: #d5d4d3;
+}
+
+.modal-header i:hover {
+    color: #c0bebd;
+}
+
+.modal-body .brand-publisher-group {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eae9e9;
+}
+
+.brand-publisher-group p {
+    margin-right: 10px;
+}
+
+.modal-body .modal-main-text {
+    padding-top: 10px;
+    line-height: 1.8em;
+}
+
+.location-panel {
+    position: absolute;
+    z-index: $aboveMapZIndex;
+    top: $marginFromTop + 30px;
+    right: 30px;
+    width: 560px;
+    background: #FFF;
+}
+
+.location-panel .navigation {
+    border: 1px solid #f5f5f5;
+    height: 44px;
+}
+
+.navigation .col-md-4 {
+    padding: 0;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #f5f5f5;
+}
+
+.location-panel .navigation p {
+    margin: 0;
+    font-weight: 700;
+    color: #2e2925;
+    font-size: 13px;
+}
+
+.location-panel .grid-list {
+    .col-md-3 {
+        padding: 0;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #f5f5f5;
+        border-right: 1px solid #f5f5f5;
+        .modal {
+            background: none;
+        }
+    }
+}
+
+#locationModal {
+    top: $marginFromTop + 30px;
+    right: 30px;
+    width: 560px;
+    position: absolute;
+    z-index: $aboveMapZIndex + 5;
+}
+
 #map {
-    height: 94%;
+    height: 100%;
 }

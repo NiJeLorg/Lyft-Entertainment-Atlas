@@ -17,4 +17,10 @@
         $locationProvider.html5Mode(true);
 
     }]);
+
+    entertainmentAtlas.run(['$window', function($window) {
+        $window.onload = function() {
+            $('#aboutModal').modal('show');
+        };
+    }]);
 }());

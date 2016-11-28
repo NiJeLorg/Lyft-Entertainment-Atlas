@@ -2,7 +2,7 @@
 // LOAD REQUIRED DEPENDENCIES //
 const express = require('express'),
     path = require('path'),
-    envVar = require('dotenv').config(),
+    port = Number(process.env.PORT),
     app = express();
 
 
@@ -17,6 +17,6 @@ app.get('/', function(req, res) {
 });
 
 // START THE SERVER
-app.listen(envVar.PORT, function() {
-    console.log('Server running on PORT: ' + envVar.PORT);
+app.listen(port, function() {
+    console.log('Server running on PORT: ' + port);
 });

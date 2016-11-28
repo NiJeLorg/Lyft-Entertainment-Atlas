@@ -1,7 +1,28 @@
 html
   include shared/head
   body(ng-app='entertainmentAtlas')
-    header
-      p SPONSORED BY:
-      img(src='images/Lyft_Logo.png')
+    header.brand-publisher
+      img.info-svg(src='images/info.svg')
+      p.brand-publisher-text BRAND PUBLISHER:
+      img.lyft-logo(src='images/Lyft_Logo.png')
+    .about-button-parent
+      button(data-toggle='modal' data-target='#aboutModal' class='about-button') About
+      #aboutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='aboutModalLabel')
+        .vertical-alignment-helper
+          .modal-dialog.vertical-align-center(role='document')
+            .modal-content
+              .modal-header
+                h4(id='aboutModalLabel') The Definitive Guide Entertainment Venues in Chicago
+                i.fa.fa-times-circle-o.fa-2x(data-dismiss='modal')
+              .modal-body
+                .brand-publisher-group
+                  p.brand-publisher-text BRAND PUBLISHER:
+                  img(src='images/Lyft_Logo.png')
+                .modal-main-text
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    | cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    | proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     .map-holder(ui-view='')

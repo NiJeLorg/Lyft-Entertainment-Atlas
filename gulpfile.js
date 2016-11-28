@@ -1,4 +1,7 @@
 'use strict';
+if(!process.env.PORT) {
+  require('dotenv').config()
+}
 const gulp = require('gulp'),
     path = require('path'),
     sass = require('gulp-sass'),
@@ -57,5 +60,5 @@ gulp.task('watch&reload', function() {
 });
 
 
-gulp.task('build', ['pug2html', 'sass2css', 'watchJSFiles']);
-gulp.task('default', ['nodemon', 'build', 'watch&reload']);
+gulp.task('build', ['pug2html', 'sass2css']);
+gulp.task('default', ['nodemon', 'build', 'watchJSFiles','watch&reload']);
