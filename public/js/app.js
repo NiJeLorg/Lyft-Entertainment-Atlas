@@ -19,8 +19,8 @@
     }]);
 
     entertainmentAtlas.run(['$window', function($window) {
-        $window.onload = function() {
-            $('#aboutModal').modal('show');
-        };
+        // $window.onload = function() {
+        //     $('#aboutModal').modal('show');
+        // };
     }]);
 }());

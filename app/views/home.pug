@@ -8,10 +8,17 @@
       p Theater Venues
   .grid-list
     .col-md-3(ng-repeat='item in data')
-      p(data-toggle='modal' data-target='#locationModal' style='cursor: pointer') {{item.gsx$name.$t}}
-      #locationModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='locationModalLabel')
+      .logo-image-parent
+        img(src='images/corridor.jpg')
+      #locationModal.modal(tab-index='-1' role='dialog' aria-labelledBy='locationModal')
         .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              p {{item.gsx$name.$t}}
+          .location-header
+            .location-header-info
+              h5 {{item.gsx$name.$t}}
+              p {{item.gsx$address.$t}}
+.location-holder(ng-if='openLocationModal')
+  p Yoo
+
+
+
 #map

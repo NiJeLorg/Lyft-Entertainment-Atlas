@@ -2,11 +2,17 @@ html
   include shared/head
   body(ng-app='entertainmentAtlas')
     header.brand-publisher
-      img.info-svg(src='images/info.svg')
+      img.info-svg.dropdown-toggle(src='images/info.svg' data-toggle='dropdown')
+      .dropdown-menu
+        h5 What's this?
+        p This content is presented by a DNAinfo advertiser; it was not produced by the editorial staff.
+          a Contact our sales team
+          | to get your business in front of local consumers. More questions? Email
+          a info@dnainfo.com
       p.brand-publisher-text BRAND PUBLISHER:
       img.lyft-logo(src='images/Lyft_Logo.png')
-    .about-button-parent
-      button(data-toggle='modal' data-target='#aboutModal' class='about-button') About
+    .about-button-container
+      button.about-button(data-toggle='modal' data-target='#aboutModal') About
       #aboutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='aboutModalLabel')
         .vertical-alignment-helper
           .modal-dialog.vertical-align-center(role='document')

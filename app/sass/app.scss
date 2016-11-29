@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 $DNAInfoBlackColor: #3E3E3B;
 $aboveMapZIndex:401;
-$marginFromTop: 120px;
+$marginFromTop: 60px;
 * {
     font-family: 'Titillium Web', sans-serif;
+}
+
+button {
+    border: none;
+    outline: none;
 }
 
 // OVERIDE LIBRARIES STYLES //
@@ -12,12 +17,73 @@ $marginFromTop: 120px;
     margin-top: $marginFromTop + 30px + 44px + 20px;
 }
 
+.leaflet-popup {
+    left: -42px !important;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+}
+
+.leaflet-popup-close-button {
+    display: none;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0px;
+}
+
+.leaflet-popup-tip-container {
+    left: 12%;
+}
+
+.marker-popup-content {
+    display: flex;
+    padding: 15px;
+    .marker-popup-info {
+        margin-right: 15px;
+        h2 {
+            margin: 0;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: #2e2925;
+            line-height: 24px;
+            margin-bottom: 2px;
+        }
+        p {
+            margin: 0;
+            font-family: 'Georgia';
+            color: #aba9a8;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+        button {
+            height: 30px;
+            background: #ff00bf;
+            border-radius: 2px;
+            padding: 0 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Titillium Web';
+        }
+    }
+    .marker-popupimage {
+        width: 80px;
+        height: 80px;
+    }
+}
+
 .modal {
-    background: rgba(46, 41, 37, .8)
+    background: rgba(46, 41, 37, .8);
 }
 
 .modal-backdrop {
     background: none;
+    pointer-events: none;
+    // z-index: -5;
 }
 
 .modal-content {
@@ -39,25 +105,54 @@ $marginFromTop: 120px;
     padding: 0;
 }
 
+// OWN STYLES //
 .brand-publisher {
-    top: 61px;
     width: 100%;
     height: 60px;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 0px rgba(255, 255, 255, 0.1);
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
     z-index: $aboveMapZIndex;
+    .brand-publisher-text {
+        color: $DNAInfoBlackColor;
+        font-weight: 600;
+        letter-spacing: .05em;
+        font-size: 12px;
+        margin: 0;
+    }
 }
 
-.brand-publisher-text {
-    color: $DNAInfoBlackColor;
-    font-weight: 600;
-    letter-spacing: .05em;
-    font-size: 12px;
-    margin: 0;
+.brand-publisher {
+    .dropdown-menu {
+        width: 13%;
+        left: 40%;
+        h5 {
+            font-weight: 700;
+        }
+    }
+    // .dropdown-menu:before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 0;
+    //     height: 0;
+    //     left: 30px;
+    //     top: 100px;
+    //     border: 25px solid;
+    //     border-color: #666 transparent transparent #666;
+    // }
+    // .dropdown-menu:after {
+    //     content: '';
+    //     position: absolute;
+    //     width: 0;
+    //     height: 0;
+    //     left: 30px;
+    //     top: 100px;
+    //     border: 25px solid;
+    //     border-color: #666 transparent transparent #666;
+    // }
 }
 
 .brand-publisher .info-svg {
@@ -71,69 +166,65 @@ $marginFromTop: 120px;
     margin-left: 10px;
 }
 
-.about-button {
-    top: $marginFromTop + 30px;
-    z-index: $aboveMapZIndex;
-    position: absolute;
-    left: 30px;
-}
-
-.about-button-parent .about-button {
-    background-color: #fc5158;
-    color: #fff;
-    border-radius: 2px;
-    border: none;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 0 10px;
-    outline: none;
-    height: 44px;
-}
-
-.vertical-alignment-helper {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
-.vertical-align-center {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.modal-header h4 {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0;
-}
-
-.modal-header i {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    color: #d5d4d3;
-}
-
-.modal-header i:hover {
-    color: #c0bebd;
-}
-
-.modal-body .brand-publisher-group {
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 15px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eae9e9;
-}
-
-.brand-publisher-group p {
-    margin-right: 10px;
-}
-
-.modal-body .modal-main-text {
-    padding-top: 10px;
-    line-height: 1.8em;
+.about-button-container {
+    .about-button {
+        top: $marginFromTop + 30px;
+        z-index: $aboveMapZIndex;
+        position: absolute;
+        left: 30px;
+        background-color: #fc5158;
+        color: #fff;
+        border-radius: 2px;
+        border: none;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 0 10px;
+        outline: none;
+        height: 44px;
+    }
+    .about-button:hover {
+        background: #ef4d54;
+    }
+    #aboutModal {
+        .vertical-alignment-helper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+        .vertical-align-center {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .modal-header h4 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .modal-header i {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            color: #d5d4d3;
+        }
+        .modal-header i:hover {
+            color: #c0bebd;
+        }
+        .modal-body .brand-publisher-group {
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eae9e9;
+        }
+        .brand-publisher-group p {
+            margin-right: 10px;
+        }
+        .modal-body .modal-main-text {
+            padding-top: 10px;
+            line-height: 1.8em;
+        }
+    }
 }
 
 .location-panel {
@@ -143,11 +234,20 @@ $marginFromTop: 120px;
     right: 30px;
     width: 560px;
     background: #FFF;
+    .navigation {
+        border: 1px solid #f5f5f5;
+        height: 44px;
+    }
 }
 
-.location-panel .navigation {
-    border: 1px solid #f5f5f5;
-    height: 44px;
+.location-holder {
+    position: absolute;
+    z-index: $aboveMapZIndex + 2;
+    top: $marginFromTop + 30px;
+    right: 30px;
+    width: 560px;
+    background: #fff;
+    height: 745px;
 }
 
 .navigation .col-md-4 {
@@ -173,8 +273,19 @@ $marginFromTop: 120px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #f5f5f5;
-        border-right: 1px solid #f5f5f5;
+        .logo-image-parent {
+            background: #2e2925;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .logo-image-parent:hover {
+            img {
+                opacity: .9;
+            }
+        }
         .modal {
             background: none;
         }
@@ -182,11 +293,33 @@ $marginFromTop: 120px;
 }
 
 #locationModal {
-    top: $marginFromTop + 30px;
-    right: 30px;
     width: 560px;
     position: absolute;
-    z-index: $aboveMapZIndex + 5;
+    height: 745px;
+    margin: 0;
+    top: -45px;
+    background: #fff;
+    .modal-dialog {
+        margin: 0;
+        .location-header {
+            margin: 25px 30px;
+            .location-header-info {
+                h5 {
+                    font-weight: 800;
+                    font-size: 28px;
+                    line-height: 34px;
+                    font-family: 'Titillium Web' sans-serif;
+                    color: #2e2925;
+                }
+                p {
+                    font-family: 'Georgia' serif;
+                    color: #aba9a8;
+                    font-size: 18px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
 }
 
 #map {
