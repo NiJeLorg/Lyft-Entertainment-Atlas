@@ -9,16 +9,15 @@
   .grid-list
     .col-md-3(ng-repeat='item in data')
       .logo-image-parent
-        img(src='images/corridor.jpg')
-      #locationModal.modal(tab-index='-1' role='dialog' aria-labelledBy='locationModal')
-        .modal-dialog(role='document')
-          .location-header
-            .location-header-info
-              h5 {{item.gsx$name.$t}}
-              p {{item.gsx$address.$t}}
-.location-holder(ng-if='openLocationModal')
-  p Yoo
-
-
+        img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
+.location-holder(ng-show='openLocationModal')
+  .location-header
+    .location-header-info
+      h5 {{locationItem.gsx$name.$t}}
+      p {{locationItem.gsx$address.$t}}
+    .location-header-close
+      i.fa.fa-times-circle-o.fa-2x(ng-click='closeLocationModalAction()')
+  .location-main
+    .location-image(ng-bind-html='{{locationItem.gsx$story.$t}}')
 
 #map

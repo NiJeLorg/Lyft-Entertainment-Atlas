@@ -214,34 +214,35 @@ button {
     .location-panel .grid-list .col-md-3 .logo-image-parent img {
       display: block;
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      outline: none; }
   .location-panel .grid-list .col-md-3 .logo-image-parent:hover img {
     opacity: .9; }
   .location-panel .grid-list .col-md-3 .modal {
     background: none; }
 
-#locationModal {
-  width: 560px;
-  position: absolute;
-  height: 745px;
-  margin: 0;
-  top: -45px;
-  background: #fff; }
-  #locationModal .modal-dialog {
-    margin: 0; }
-    #locationModal .modal-dialog .location-header {
-      margin: 25px 30px; }
-      #locationModal .modal-dialog .location-header .location-header-info h5 {
-        font-weight: 800;
-        font-size: 28px;
-        line-height: 34px;
-        font-family: 'Titillium Web' sans-serif;
-        color: #2e2925; }
-      #locationModal .modal-dialog .location-header .location-header-info p {
-        font-family: 'Georgia' serif;
-        color: #aba9a8;
-        font-size: 18px;
-        line-height: 30px; }
+.location-holder .location-header {
+  padding: 30px 25px;
+  display: flex;
+  justify-content: space-between; }
+  .location-holder .location-header h5 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 34px;
+    color: #2e2925; }
+  .location-holder .location-header p {
+    font-family: 'Georgia', serif;
+    color: #aba9a8;
+    font-size: 18px;
+    line-height: 30px; }
+
+.location-holder .location-header-close i {
+  cursor: pointer;
+  color: #d5d4d3; }
+
+.location-holder .location-header-close i:hover {
+  color: #c0bebd; }
 
 #map {
   height: 100%; }
