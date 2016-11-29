@@ -180,15 +180,6 @@ button {
     border: 1px solid #f5f5f5;
     height: 44px; }
 
-.location-holder {
-  position: absolute;
-  z-index: 403;
-  top: 90px;
-  right: 30px;
-  width: 560px;
-  background: #fff;
-  height: 745px; }
-
 .navigation .col-md-4 {
   padding: 0;
   height: inherit;
@@ -221,28 +212,49 @@ button {
   .location-panel .grid-list .col-md-3 .modal {
     background: none; }
 
-.location-holder .location-header {
-  padding: 30px 25px;
-  display: flex;
-  justify-content: space-between; }
-  .location-holder .location-header h5 {
-    margin: 0;
-    font-weight: 800;
-    font-size: 28px;
-    line-height: 34px;
-    color: #2e2925; }
-  .location-holder .location-header p {
+.location-holder {
+  position: absolute;
+  z-index: 403;
+  top: 90px;
+  right: 30px;
+  width: 560px;
+  background: #fff;
+  height: 745px;
+  overflow-y: scroll; }
+  .location-holder .location-header {
+    padding: 30px 25px;
+    display: flex;
+    justify-content: space-between; }
+    .location-holder .location-header .location-header-info h5 {
+      margin: 0;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 34px;
+      color: #2e2925; }
+    .location-holder .location-header .location-header-info p {
+      font-family: 'Georgia', serif;
+      color: #aba9a8;
+      font-size: 18px;
+      line-height: 30px; }
+    .location-holder .location-header .location-header-close i {
+      cursor: pointer;
+      color: #d5d4d3; }
+    .location-holder .location-header .location-header-close i:hover {
+      color: #c0bebd; }
+  .location-holder .location-main p {
+    padding: 0 30px;
     font-family: 'Georgia', serif;
-    color: #aba9a8;
+    color: #2e2925;
     font-size: 18px;
     line-height: 30px; }
-
-.location-holder .location-header-close i {
-  cursor: pointer;
-  color: #d5d4d3; }
-
-.location-holder .location-header-close i:hover {
-  color: #c0bebd; }
+  .location-holder .location-main .caption {
+    padding: 10px 30px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #2e2925;
+    line-height: 16px;
+    font-family: 'Titillium Web', sans-serif;
+    border-bottom: 1px solid #eae9e9; }
 
 #map {
   height: 100%; }

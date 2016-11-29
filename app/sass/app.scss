@@ -240,16 +240,6 @@ button {
     }
 }
 
-.location-holder {
-    position: absolute;
-    z-index: $aboveMapZIndex + 2;
-    top: $marginFromTop + 30px;
-    right: 30px;
-    width: 560px;
-    background: #fff;
-    height: 745px;
-}
-
 .navigation .col-md-4 {
     padding: 0;
     height: inherit;
@@ -294,31 +284,59 @@ button {
 }
 
 .location-holder {
+    position: absolute;
+    z-index: $aboveMapZIndex + 2;
+    top: $marginFromTop + 30px;
+    right: 30px;
+    width: 560px;
+    background: #fff;
+    height: 745px;
+    overflow-y: scroll;
     .location-header {
         padding: 30px 25px;
         display: flex;
         justify-content: space-between;
-        h5 {
-            margin: 0;
-            font-weight: 800;
-            font-size: 28px;
-            line-height: 34px;
-            color: #2e2925;
+        .location-header-info {
+            h5 {
+                margin: 0;
+                font-weight: 800;
+                font-size: 28px;
+                line-height: 34px;
+                color: #2e2925;
+            }
+            p {
+                font-family: 'Georgia', serif;
+                color: #aba9a8;
+                font-size: 18px;
+                line-height: 30px;
+            }
         }
+        .location-header-close {
+            i {
+                cursor: pointer;
+                color: #d5d4d3;
+            }
+            i:hover {
+                color: #c0bebd
+            }
+        }
+    }
+    .location-main {
         p {
+            padding: 0 30px;
             font-family: 'Georgia', serif;
-            color: #aba9a8;
+            color: #2e2925;
             font-size: 18px;
             line-height: 30px;
         }
-    }
-    .location-header-close {
-        i {
-            cursor: pointer;
-            color: #d5d4d3;
-        }
-        i:hover {
-            color: #c0bebd
+        .caption {
+            padding: 10px 30px;
+            font-size: 11px;
+            font-weight: 400;
+            color: #2e2925;
+            line-height: 16px;
+            font-family: 'Titillium Web', sans-serif;
+            border-bottom: 1px solid #eae9e9;
         }
     }
 }
