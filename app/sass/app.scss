@@ -87,7 +87,6 @@ a:hover {
 .modal-backdrop {
     background: none;
     pointer-events: none;
-    // z-index: -5;
 }
 
 .modal-content {
@@ -111,12 +110,13 @@ a:hover {
 
 // OWN STYLES //
 .book-a-ride {
-    background: #FD1EBF;
+    background: #ff00bf;
     color: #fff;
     font-size: 13px;
     font-weight: 700;
     padding: 0 10px;
     border-radius: 2px;
+    height: 30px;
 }
 
 .book-a-ride:hover {
@@ -426,6 +426,38 @@ a:hover {
                     font-size: 11px;
                 }
             }
+        }
+    }
+}
+
+.popupInfo {
+    display: flex;
+    padding: 15px;
+    .popupInfo-location {
+        margin-right: 15px;
+        h5 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 800;
+            color: #2e2925;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        p {
+            font-family: 'Georgia', serif;
+            margin-top: 0;
+            font-size: 14px;
+            color: #aba9a8;
+            line-height: 20px;
+            margin-bottom: 7px;
+        }
+    }
+    .popupInfo-image {
+        width: 80px;
+        height: 80px;
+        img {
+            width: 100%;
+            height: 100%;
         }
     }
 }

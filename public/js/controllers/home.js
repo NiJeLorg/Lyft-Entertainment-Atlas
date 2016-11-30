@@ -1,6 +1,6 @@
 'use strict';
 angular.module('entertainmentAtlas')
-    .controller('HomeCtrl', function($scope, DataService) {
+    .controller('HomeCtrl', function($scope, DataService, $sce, $parse) {
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
             $scope.openLocationModal = true;
@@ -22,10 +22,22 @@ angular.module('entertainmentAtlas')
         });
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
+
             for (var i = 0; i < $scope.data.length; i++) {
                 angular.forEach($scope.data[i], function(value, key) {
-                    L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker }).addTo(map).bindPopup('<div class="marker-popup-content"><div class="marker-popup-info"><h2>Suada</h2><p>Teddy</p><button>Book a ride!</button></div><div class="marker-popupimage"></div></div>');
-                    console.log(i, 'TIMES');
+                    console.log($scope.data[i].gsx$image.$t, 'IMAGE ADDRESS');
+                    var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
+                    var popInfo = '<div class="popupInfo">' +
+                        '<div class="popupInfo-location">' +
+                        '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
+                        '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
+                        '<button class="book-a-ride">' + 'Book a ride!' + '</button>' +
+                        '</div>' +
+                        '<div class="popupInfo-image">' +
+                          '<img src="' + imagesUrl +  $scope.data[i].gsx$image.$t  + '" class="marker-image">' +
+                        '</div>' +
+                        '</div>';
+                    L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker }).addTo(map).bindPopup(popInfo);
                 });
             }
         }, function(err) {
