@@ -11,6 +11,10 @@ button {
     outline: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 // OVERIDE LIBRARIES STYLES //
 .leaflet-left .leaflet-control {
     margin-left: 30px;
@@ -140,10 +144,18 @@ button {
 
 .brand-publisher {
     .dropdown-menu {
-        width: 13%;
+        width: 14%;
         left: 40%;
+        padding: .8%;
         h5 {
             font-weight: 700;
+            display: flex;
+            margin: 0;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        p {
+            line-height: 22px;
         }
     }
     // .dropdown-menu:before {
@@ -166,6 +178,11 @@ button {
     //     border: 25px solid;
     //     border-color: #666 transparent transparent #666;
     // }
+}
+
+.info-svg {
+    width: 15px;
+    height: 15px;
 }
 
 .brand-publisher .info-svg {
@@ -384,7 +401,7 @@ button {
                 border-right: 1px solid #eae9e9;
                 padding-left: 5px;
                 .fa {
-                  margin-right: 5px;
+                    margin-right: 5px;
                 }
                 p {
                     margin-bottom: 0;

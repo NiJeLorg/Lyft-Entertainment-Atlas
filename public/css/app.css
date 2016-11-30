@@ -6,6 +6,9 @@ button {
   border: none;
   outline: none; }
 
+a:hover {
+  text-decoration: none; }
+
 .leaflet-left .leaflet-control {
   margin-left: 30px;
   margin-top: 154px; }
@@ -110,10 +113,21 @@ button {
     margin: 0; }
 
 .brand-publisher .dropdown-menu {
-  width: 13%;
-  left: 40%; }
+  width: 14%;
+  left: 40%;
+  padding: .8%; }
   .brand-publisher .dropdown-menu h5 {
-    font-weight: 700; }
+    font-weight: 700;
+    display: flex;
+    margin: 0;
+    margin-bottom: 10px;
+    align-items: center; }
+  .brand-publisher .dropdown-menu p {
+    line-height: 22px; }
+
+.info-svg {
+  width: 15px;
+  height: 15px; }
 
 .brand-publisher .info-svg {
   width: 15px;
