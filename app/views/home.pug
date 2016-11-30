@@ -7,7 +7,7 @@
     .col-md-4
       p Theater Venues
   .grid-list
-    .col-md-3(ng-repeat='item in data')
+    .col-md-3(ng-repeat='item in data' ng-click='openLocationPopup(item)')
       .logo-image-parent
         img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
 .location-holder(ng-show='openLocationModal')
