@@ -38,7 +38,15 @@ angular.module('entertainmentAtlas')
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
                     '</div>' +
                     '</div>';
-                L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker }).addTo(map).bindPopup(popInfo);
+                L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker })
+                    .addTo(map)
+                    .bindPopup(popInfo)
+                    .on('click', function(){
+                        map.flyTo([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], 15, {
+                            animate: true,
+                            duration: 2
+                        });
+                });
             }
         }, function(err) {
             console.log('There was an error: ' + err);
