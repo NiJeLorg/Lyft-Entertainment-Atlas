@@ -24,10 +24,8 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             for (var i = 0; i < $scope.data.length; i++) {
-                angular.forEach($scope.data[i], function(value, key) {
-                    L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker }).addTo(map).bindPopup('<div class="marker-popup-content"><div class="marker-popup-info"><h2>Suada</h2><p>Teddy</p><button>Book a ride!</button></div><div class="marker-popupimage"></div></div>');
-                    console.log(i, 'TIMES');
-                });
+                L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker }).addTo(map).bindPopup('<div class="marker-popup-content"><div class="marker-popup-info"><h2>'+$scope.data[i].gsx$name.$t+'</h2><p>'+$scope.data[i].gsx$address.$t+'</p><button>Book a ride!</button></div><div class="marker-popupimage"><img src="https://editorial-chi.dnainfo.com/interactives/entertainment/img/'+$scope.data[i].gsx$image.$t+'" /></div></div>');
+                console.log(i, 'TIMES');
             }
         }, function(err) {
             console.log('There was an error: ' + err);
