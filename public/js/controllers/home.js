@@ -21,6 +21,9 @@ angular.module('entertainmentAtlas')
             iconUrl: '../images/marker.png',
             iconRetinaUrl: '../images/marker2x.png',
         });
+
+        DataService.connectToLyft();
+
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             for (var i = 0; i < $scope.data.length; i++) {

@@ -15,5 +15,26 @@ angular.module('entertainmentAtlas')
             });
             return deferred.promise;
         };
+
+        service.connectToLyft = function() {
+            var deferred = $q.defer();
+            $http.post('https://api.lyft.com/oauth/token', {
+                url: 'https://api.lyft.com/oauth/token',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: {
+                    client_id: '4ujGa8RbFc5n',
+                    client_secret: 'ndUxKLmGVe8CPVhG7xqCDrz9SCk5s5hY',
+                    'grant_type': 'client_credentials',
+                    'scope': 'public'
+                }
+            }).then(function(resp) {
+                console.log(resp);
+            }, function(err) {
+                console.log(err);
+            });
+            return deferred.promise;
+        };
         return service;
     });
