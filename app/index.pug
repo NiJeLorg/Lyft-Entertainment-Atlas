@@ -2,16 +2,16 @@ html
   include shared/head
   body(ng-app='entertainmentAtlas')
     header.brand-publisher
-      img.info-svg.dropdown-toggle(src='images/info.svg' data-toggle='dropdown')
-      .dropdown-menu
-        h5
-          img.info-svg(src='images/info.svg')
-          | What's this?
-
-        p This content is presented by a DNAinfo advertiser; it was not produced by the editorial staff.
-          a(href='#') &thinsp; Contact our sales team
-          | &thinsp; to get your business in front of local consumers. More questions? Email &thinsp;
-          a(href='#') info@dnainfo.com
+      .dropdown
+        img.info-svg.dropdown-toggle(src='images/info.svg' data-toggle='dropdown')
+        .dropdown-menu
+          h5
+            img.info-svg(src='images/info.svg')
+            | What's this?
+          p This content is presented by a DNAinfo advertiser; it was not produced by the editorial staff.
+            a(href='#') &thinsp; Contact our sales team
+            | &thinsp; to get your business in front of local consumers. More questions? Email &thinsp;
+            a(href='#') info@dnainfo.com
       p.brand-publisher-text BRAND PUBLISHER:
       img.lyft-logo(src='images/Lyft_Logo.png')
     .about-button-container
