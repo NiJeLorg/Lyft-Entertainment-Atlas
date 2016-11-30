@@ -39,8 +39,11 @@ angular.module('entertainmentAtlas')
                     .addTo(map)
                     .bindPopup(popInfo)
                     .on('click', function(){
-                        map.flyTo([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], 15);
-                    });
+                        map.flyTo([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], 15, {
+                            animate: true,
+                            duration: 2
+                        });
+                });
             }
         }, function(err) {
             console.log('There was an error: ' + err);
