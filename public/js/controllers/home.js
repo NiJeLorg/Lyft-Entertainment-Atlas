@@ -11,14 +11,15 @@ angular.module('entertainmentAtlas')
         };
         var L = window.L;
         var map = new L.Map('map').setView([41.8914184, -87.6116459], 11);
-        L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+        L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png', {
             attribution: 'Positron'
         }).addTo(map);
         var redMarker = new L.Icon({
             iconSize: [20, 32],
             iconAnchor: [13, 27],
             popupAnchor: [13, -30],
-            iconUrl: '../images/marker.svg',
+            iconUrl: '../images/marker.png',
+            iconRetinaUrl: '../images/marker2x.png',
         });
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
