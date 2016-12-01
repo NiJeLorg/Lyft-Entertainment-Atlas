@@ -1,6 +1,23 @@
 'use strict';
 angular.module('entertainmentAtlas')
     .controller('HomeCtrl', function($scope, DataService, $sce, $parse) {
+        $scope.filterType = 'all';
+        $scope.setFilterType = function(type) {
+            $scope.filterType = type;
+        };
+        $scope.filterByVenueType = function(item) {
+            if ($scope.filterType === 'theater') {
+                if (item.gsx$theater.$t === 'Yes') {
+                    return true;
+                }
+            } else if ($scope.filterType === 'music') {
+                if (item.gsx$music.$t === 'Yes') {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        };
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
             $scope.openLocationModal = true;
@@ -55,7 +72,6 @@ angular.module('entertainmentAtlas')
                     .addTo(map)
                     .bindPopup(popInfo)
                     .on('click', function(e) {
-                        console.log(e, 'E');
                         map.flyTo([e.target._latlng.lat, e.target._latlng.lng], 15, {
                             animate: true,
                             duration: 2
