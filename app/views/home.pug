@@ -1,41 +1,41 @@
-//- .location-panel
-//-   .navigation
-//-     .col-md-4
-//-       p All Venues
-//-     .col-md-4
-//-       p Music Venues
-//-     .col-md-4
-//-       p Theater Venues
-//-   .grid-list
-//-     .col-md-3(ng-repeat='item in data' ng-click='openLocationPopup(item)')
-//-       .logo-image-parent
-//-         img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
-//- .location-holder(ng-show='openLocationModal')
-//-   .location-header
-//-     .location-header-info
-//-       h5 {{locationItem.gsx$name.$t}}
-//-       p {{locationItem.gsx$address.$t}}
-//-     .location-header-close
-//-       i.fa.fa-times-circle-o.fa-2x(ng-click='closeLocationModalAction()')
-//-   .location-main(ng-bind-html='locationItem.gsx$story.$t')
-//-   .location-footer
-//-     .get-lyft
-//-       p Ready to go? Get a &nbsp;
-//-         a(href='#') Lyft
-//-         | &nbsp; from a friendly driver within minutes.
-//-       button.book-a-ride Book a ride!
-//-     .social-media-links
-//-       .link
-//-         p Website
-//-       .link
-//-         .fa.fa-facebook-official
-//-         p Facebook
-//-       .link
-//-         .fa.fa-twitter
-//-         p Twitter
-//-       .link
-//-         .fa.fa-instagram
-//-         p Instagram
+.location-panel
+  .navigation
+    .col-md-4
+      p All Venues
+    .col-md-4
+      p Music Venues
+    .col-md-4
+      p Theater Venues
+  .grid-list
+    .col-md-3(ng-repeat='item in data' ng-click='openLocationPopup(item)')
+      .logo-image-parent
+        img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
+.location-holder(ng-show='openLocationModal')
+  .location-header
+    .location-header-info
+      h5 {{locationItem.gsx$name.$t}}
+      p {{locationItem.gsx$address.$t}}
+    .location-header-close
+      i.fa.fa-times-circle-o.fa-2x(ng-click='closeLocationModalAction()')
+  .location-main(ng-bind-html='locationItem.gsx$story.$t')
+  .location-footer
+    .get-lyft
+      p Ready to go? Get a &nbsp;
+        a(href='#') Lyft
+        | &nbsp; from a friendly driver within minutes.
+      button.book-a-ride Book a ride!
+    .social-media-links
+      .link
+        p Website
+      .link
+        .fa.fa-facebook-official
+        p Facebook
+      .link
+        .fa.fa-twitter
+        p Twitter
+      .link
+        .fa.fa-instagram
+        p Instagram
 
 footer
   .social-media-icons
