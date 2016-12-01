@@ -379,3 +379,16 @@ a:hover {
 
 #map {
   height: 100%; }
+
+footer {
+  position: absolute;
+  z-index: 401;
+  bottom: 20px;
+  left: 30px; }
+  footer .social-media-icons {
+    cursor: pointer; }
+    footer .social-media-icons .fa-facebook-official {
+      margin-right: 15px;
+      color: #3D5A96; }
+    footer .social-media-icons .fa-twitter {
+      color: #59ADEB; }

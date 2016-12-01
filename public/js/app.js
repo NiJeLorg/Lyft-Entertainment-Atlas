@@ -1,6 +1,6 @@
 'use strict';
 (function() {
-    var entertainmentAtlas = angular.module('entertainmentAtlas', ['ui.router', 'ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize']);
+    var entertainmentAtlas = angular.module('entertainmentAtlas', ['720kb.socialshare', 'ui.router', 'ngAria', 'ngAnimate', 'ngSanitize']);
 
     entertainmentAtlas.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
 

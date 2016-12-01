@@ -465,3 +465,20 @@ a:hover {
 #map {
     height: 100%;
 }
+
+footer {
+    position: absolute;
+    z-index: $aboveMapZIndex;
+    bottom: 20px;
+    left: 30px;
+    .social-media-icons {
+        cursor: pointer;
+        .fa-facebook-official {
+            margin-right: 15px;
+            color: #3D5A96;
+        }
+        .fa-twitter {
+            color: #59ADEB;
+        }
+    }
+}
