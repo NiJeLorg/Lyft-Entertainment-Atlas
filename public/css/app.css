@@ -14,7 +14,7 @@ a:hover {
   margin-top: 154px; }
 
 .leaflet-popup {
-  left: -42px !important; }
+  left: -49px !important; }
 
 .leaflet-popup-content {
   margin: 0; }
@@ -233,6 +233,7 @@ a:hover {
 .location-panel {
   position: absolute;
   z-index: 401;
+  height: calc(100vh - 90px);
   top: 90px;
   right: 30px;
   width: 560px;
@@ -280,7 +281,7 @@ a:hover {
   right: 30px;
   width: 560px;
   background: #fff;
-  height: 745px;
+  height: calc(100vh - 90px);
   overflow-y: scroll; }
   .location-holder .location-header {
     padding: 30px 25px;
