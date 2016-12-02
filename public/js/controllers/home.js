@@ -61,7 +61,7 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
-            var marker, lat, lng;
+            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var popInfo = '<div class="popupInfo">' +
@@ -84,7 +84,7 @@ angular.module('entertainmentAtlas')
                         latSouth = lat - 0.01;
                         lngEast = lng + 0.01;
                         lngWest = lng - 0.01;
-                        corner = L.latLng(latNorth, lngEast),
+                        corner1 = L.latLng(latNorth, lngEast),
                         corner2 = L.latLng(latSouth, lngWest),
                         bounds = L.latLngBounds(corner1, corner2);
                         map.flyToBounds(bounds, {
