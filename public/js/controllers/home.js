@@ -90,7 +90,7 @@ angular.module('entertainmentAtlas')
                         map.flyToBounds(bounds, {
                             animate: true,
                             duration: 2,
-                            paddingBottomRight: [0, 200], 
+                            paddingBottomRight: [200, 0], 
                         });
                         // map.flyTo([lat, lng], 15, {
                         //     animate: true,
