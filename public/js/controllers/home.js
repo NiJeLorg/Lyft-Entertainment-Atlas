@@ -38,10 +38,25 @@ angular.module('entertainmentAtlas')
                 }
             }
         };
+        var redirectStores = function() {
+            console.log(navigator.userAgent.toLowerCase());
+            if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+                window.location.href = 'https://play.google.com/store/apps/details?id=me.lyft.android';
+            } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+                window.location.href = 'https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8';
+            } else {
+                window.location.href = 'https://www.lyft.com/';
+            }
+        };
         $scope.orderLyft = function() {
-            console.log($scope.selectedLocation, 'LOC');
             var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
-            $window.location = url;
+            try {
+                // $window.location.href = url;
+                window.location.assign("customprotocol://");
+            } catch (e) {
+                console.log(e);
+                redirectStores();
+            }
         };
 
         var L = window.L;
@@ -58,18 +73,18 @@ angular.module('entertainmentAtlas')
         });
 
         DataService.connectToLyft();
-
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
             var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
+                var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
-                    '<button class="book-a-ride">' + 'Book a ride!' + '</button>' +
+                    '<a href="' + lyftUrl + '" class="book-a-ride marker" >' + 'Book a ride!' + '</a>' +
                     '</div>' +
                     '<div class="popupInfo-image">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
@@ -86,14 +101,14 @@ angular.module('entertainmentAtlas')
                         lngEast = lng + 0.01;
                         lngWest = lng - 0.01;
                         corner1 = L.latLng(latNorth, lngEast),
-                        corner2 = L.latLng(latSouth, lngWest),
-                        bounds = L.latLngBounds(corner1, corner2);
+                            corner2 = L.latLng(latSouth, lngWest),
+                            bounds = L.latLngBounds(corner1, corner2);
                         // TO DO: If at mobile screen widths, set paddingBottomRight = [0, 0]
                         paddingBottomRight = [600, 0];
                         map.flyToBounds(bounds, {
                             animate: true,
                             duration: 2,
-                            paddingBottomRight: paddingBottomRight, 
+                            paddingBottomRight: paddingBottomRight,
                         });
 
                     });
@@ -104,6 +119,10 @@ angular.module('entertainmentAtlas')
             });
         }, function(err) {
             console.log('There was an error: ' + err);
+        });
+
+        $(document).on('click', '.marker', function(e) {
+            console.log(e, 'E');
         });
 
     });
