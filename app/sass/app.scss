@@ -360,7 +360,7 @@ a:hover {
     width: 560px;
     background: #fff;
     height: calc(100vh - 90px);
-    overflow-y: scroll;
+    overflow: hidden;
     .location-header {
         padding: 30px 25px;
         display: flex;
@@ -395,7 +395,12 @@ a:hover {
     }
     .location-main {
         border-bottom: 1px solid #eae9e9;
-        margin-top: 133px;
+        margin-top: 140px;
+        max-height: 100vh;
+        overflow-y: scroll;
+        width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 135px;
         p {
             padding: 0 30px;
             font-family: 'Georgia', serif;
