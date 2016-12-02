@@ -445,14 +445,16 @@ a:hover {
                 color: #aba9a8;
                 .link {
                     display: inline-flex;
-                    width: 15%;
+                    width: 17%;
                     align-items: center;
                     border-right: 1px solid #eae9e9;
                     padding-left: 5px;
                     .fa {
                         margin-right: 5px;
+                        margin-left: 5px;
                     }
-                    p {
+                    a {
+                        color: #aba9a8;
                         margin-bottom: 0;
                         font-weight: 800;
                         font-size: 11px;
