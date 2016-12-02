@@ -1,7 +1,8 @@
 'use strict';
 angular.module('entertainmentAtlas')
-    .controller('HomeCtrl', function($scope, DataService, $sce, $parse) {
+    .controller('HomeCtrl', function($scope, DataService, $sce, $parse, $window) {
         $scope.filterType = 'all';
+        $scope.selectedLocation = {};
         $scope.setFilterType = function(type) {
             $scope.filterType = type;
         };
@@ -18,6 +19,9 @@ angular.module('entertainmentAtlas')
                 return true;
             }
         };
+        $scope.selectLocation = function(location) {
+            $scope.selectedLocation = location;
+        };
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
             $scope.openLocationModal = true;
@@ -33,6 +37,10 @@ angular.module('entertainmentAtlas')
                     map._layers[key].fire('click');
                 }
             }
+        };
+        $scope.orderLyft = function() {
+            var url = 'lyft://ridetype?id=lyft&pickup[latitude]=37.764728&pickup[longitude]=-122.422999&destination[latitude]=37.7763592&destination[longitude]=-122.4242038';
+            $window.location = url;
         };
 
         var L = window.L;
@@ -53,11 +61,9 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
-            var marker;
+            var marker, lat, lng;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lat = $scope.data[i].gsx$latitude.$t;
-                var long = $scope.data[i].gsx$longitude.$t;
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
@@ -72,10 +78,24 @@ angular.module('entertainmentAtlas')
                     .addTo(map)
                     .bindPopup(popInfo)
                     .on('click', function(e) {
-                        map.flyTo([e.target._latlng.lat, e.target._latlng.lng], 15, {
+                        lat = e.target._latlng.lat;
+                        lng = e.target._latlng.lng;
+                        latNorth = lat + 0.01;
+                        latSouth = lat - 0.01;
+                        lngEast = lng + 0.01;
+                        lngWest = lng - 0.01;
+                        corner = L.latLng(latNorth, lngEast),
+                        corner2 = L.latLng(latSouth, lngWest),
+                        bounds = L.latLngBounds(corner1, corner2);
+                        map.flyToBounds(bounds, {
                             animate: true,
-                            duration: 2
+                            duration: 2,
+                            paddingBottomRight: [0, 200], 
                         });
+                        // map.flyTo([lat, lng], 15, {
+                        //     animate: true,
+                        //     duration: 2
+                        // });
                     });
                 featureGroup.addLayer(marker);
             }
@@ -85,4 +105,5 @@ angular.module('entertainmentAtlas')
         }, function(err) {
             console.log('There was an error: ' + err);
         });
+
     });

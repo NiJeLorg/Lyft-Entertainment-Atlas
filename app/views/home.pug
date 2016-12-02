@@ -8,7 +8,7 @@
       p.theater-venues(ng-click='setFilterType("theater")') Theater Venues
   .grid-list
     .col-md-3(ng-repeat='item in data | filter:filterByVenueType' ng-click='openLocationPopup(item)')
-      .logo-image-parent
+      .logo-image-parent(ng-click='selectLocation(item)')
         img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
 .location-holder(ng-show='openLocationModal')
   .location-header
@@ -21,9 +21,9 @@
   .location-footer
     .get-lyft
       p Ready to go? Get a &thinsp;
-        a(href='#') Lyft
+        a Lyft
         | &thinsp; from a friendly driver within minutes.
-      button.book-a-ride Book a ride!
+      button.book-a-ride(ng-click='orderLyft()') Book a ride!
     .social-media-links
       .link
         p Website
