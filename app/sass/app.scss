@@ -417,47 +417,47 @@ a:hover {
             font-family: 'Titillium Web', sans-serif;
             border-bottom: 1px solid #eae9e9;
         }
-    }
-    .location-footer {
-        padding: 0 30px;
-        margin-top: 15px;
-        .get-lyft {
-            border-bottom: 1px solid #eae9e9;
-            p {
-                font-size: 18px;
-                font-weight: 800;
-                font-family: 'Titillium Web', sans-serif;
-                a {
-                    color: #FD1EBF;
-                    text-decoration: none;
-                }
-            }
-            button {
-                height: 44px;
-                margin-bottom: 15px;
-            }
-        }
-        .social-media-links {
-            height: 61px;
-            display: flex;
-            align-items: center;
-            color: #aba9a8;
-            .link {
-                display: inline-flex;
-                width: 15%;
-                align-items: center;
-                border-right: 1px solid #eae9e9;
-                padding-left: 5px;
-                .fa {
-                    margin-right: 5px;
-                }
+        .location-footer {
+            padding: 0 30px;
+            margin-top: 15px;
+            .get-lyft {
+                border-bottom: 1px solid #eae9e9;
                 p {
-                    margin-bottom: 0;
+                    font-size: 18px;
                     font-weight: 800;
-                    font-size: 11px;
+                    font-family: 'Titillium Web', sans-serif;
+                    a {
+                        color: #FD1EBF;
+                        text-decoration: none;
+                    }
+                }
+                button {
+                    height: 44px;
+                    margin-bottom: 15px;
                 }
             }
-        }
+            .social-media-links {
+                height: 61px;
+                display: flex;
+                align-items: center;
+                color: #aba9a8;
+                .link {
+                    display: inline-flex;
+                    width: 15%;
+                    align-items: center;
+                    border-right: 1px solid #eae9e9;
+                    padding-left: 5px;
+                    .fa {
+                        margin-right: 5px;
+                    }
+                    p {
+                        margin-bottom: 0;
+                        font-weight: 800;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }  
     }
 }
 
