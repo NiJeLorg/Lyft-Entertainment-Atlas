@@ -24,6 +24,7 @@ angular.module('entertainmentAtlas')
         };
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
+            console.log(item);
             $scope.openLocationModal = true;
             $scope.locationItem = item;
         };
@@ -51,13 +52,13 @@ angular.module('entertainmentAtlas')
             if (Modernizr.touch){
                 var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
                 try {
-                    $window.location.href = url;
+                    window.open(url, '_blank');
                 } catch (e) {
                     console.log(e);
                     redirectStores();
                 }
             } else {
-                window.location.href = 'https://www.lyft.com/';
+                window.open('https://www.lyft.com/', '_blank');
             }
         };
 
@@ -91,7 +92,7 @@ angular.module('entertainmentAtlas')
                     '<div class="popupInfo-location">' +
                     '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
-                    '<a href="' + lyftUrl + '" class="book-a-ride" >Book a ride!</a>' +
+                    '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>' +
                     '</div>' +
                     '<div class="popupInfo-image">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
@@ -117,6 +118,9 @@ angular.module('entertainmentAtlas')
                             duration: 2,
                             paddingBottomRight: paddingBottomRight,
                         });
+                        // load modal
+                        console.log(e, "Event");
+                        $scope.openLocationModalAction(e);
 
                     });
                 featureGroup.addLayer(marker);
