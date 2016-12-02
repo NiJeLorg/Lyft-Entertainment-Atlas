@@ -81,12 +81,17 @@ angular.module('entertainmentAtlas')
             var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                var lyftUrl;
+                if (Modernizr.touch){
+                    var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                } else {
+                    var lyftUrl = 'https://www.lyft.com/';
+                }
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
-                    '<a href="' + lyftUrl + '" class="book-a-ride marker" >' + 'Book a ride!' + '</a>' +
+                    '<a href="' + lyftUrl + '" class="book-a-ride" >Book a ride!</a>' +
                     '</div>' +
                     '<div class="popupInfo-image">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
@@ -121,10 +126,6 @@ angular.module('entertainmentAtlas')
             });
         }, function(err) {
             console.log('There was an error: ' + err);
-        });
-
-        $(document).on('click', '.marker', function(e) {
-            console.log(e, 'E');
         });
 
     });
