@@ -21,7 +21,7 @@
   .location-footer
     .get-lyft
       p Ready to go? Get a &thinsp;
-        a Lyft
+        a(href='lyft://ridetype?id=lyft&pickup[latitude]=37.764728&pickup[longitude]=-122.422999&destination[latitude]=37.7763592&destination[longitude]=-122.4242038') Lyft
         | &thinsp; from a friendly driver within minutes.
       button.book-a-ride(ng-click='orderLyft()') Book a ride!
     .social-media-links
