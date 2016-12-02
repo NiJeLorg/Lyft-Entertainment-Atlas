@@ -469,7 +469,7 @@ a:hover {
             font-size: 14px;
             color: #aba9a8;
             line-height: 20px;
-            margin-bottom: 7px;
+            margin-bottom: 12px;
         }
     }
     .popupInfo-image {
@@ -501,4 +501,11 @@ footer {
             color: #59ADEB;
         }
     }
+}
+
+.marker {
+    color: #fff !important;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

@@ -237,7 +237,8 @@ a:hover {
   top: 90px;
   right: 30px;
   width: 560px;
-  background: #FFF; }
+  background: #FFF;
+  overflow: auto; }
   .location-panel .navigation {
     border: 1px solid #f5f5f5;
     height: 44px; }
@@ -384,7 +385,7 @@ a:hover {
       font-size: 14px;
       color: #aba9a8;
       line-height: 20px;
-      margin-bottom: 7px; }
+      margin-bottom: 12px; }
   .popupInfo .popupInfo-image {
     width: 80px;
     height: 80px; }
@@ -407,3 +408,9 @@ footer {
       color: #3D5A96; }
     footer .social-media-icons .fa-twitter {
       color: #59ADEB; }
+
+.marker {
+  color: #fff !important;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
