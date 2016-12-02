@@ -61,7 +61,7 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
-            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds;
+            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var popInfo = '<div class="popupInfo">' +
@@ -87,15 +87,14 @@ angular.module('entertainmentAtlas')
                         corner1 = L.latLng(latNorth, lngEast),
                         corner2 = L.latLng(latSouth, lngWest),
                         bounds = L.latLngBounds(corner1, corner2);
+                        // TO DO: If at mobile screen widths, set paddingBottomRight = [0, 0]
+                        paddingBottomRight = [600, 0];
                         map.flyToBounds(bounds, {
                             animate: true,
                             duration: 2,
-                            paddingBottomRight: [600, 0], 
+                            paddingBottomRight: paddingBottomRight, 
                         });
-                        // map.flyTo([lat, lng], 15, {
-                        //     animate: true,
-                        //     duration: 2
-                        // });
+
                     });
                 featureGroup.addLayer(marker);
             }
