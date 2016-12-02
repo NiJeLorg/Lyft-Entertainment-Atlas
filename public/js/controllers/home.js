@@ -1,7 +1,8 @@
 'use strict';
 angular.module('entertainmentAtlas')
-    .controller('HomeCtrl', function($scope, DataService, $sce, $parse) {
+    .controller('HomeCtrl', function($scope, DataService, $sce, $parse, $window) {
         $scope.filterType = 'all';
+        $scope.selectedLocation = {};
         $scope.setFilterType = function(type) {
             $scope.filterType = type;
         };
@@ -18,6 +19,9 @@ angular.module('entertainmentAtlas')
                 return true;
             }
         };
+        $scope.selectLocation = function(location) {
+            $scope.selectedLocation = location;
+        };
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
             $scope.openLocationModal = true;
@@ -33,6 +37,10 @@ angular.module('entertainmentAtlas')
                     map._layers[key].fire('click');
                 }
             }
+        };
+        $scope.orderLyft = function() {
+            var url = 'lyft://ridetype?id=lyft&pickup[latitude]=37.764728&pickup[longitude]=-122.422999&destination[latitude]=37.7763592&destination[longitude]=-122.4242038';
+            $window.location.href = url;
         };
 
         var L = window.L;
@@ -85,4 +93,5 @@ angular.module('entertainmentAtlas')
         }, function(err) {
             console.log('There was an error: ' + err);
         });
+
     });
