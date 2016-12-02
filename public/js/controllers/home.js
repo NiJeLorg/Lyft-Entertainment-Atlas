@@ -39,7 +39,8 @@ angular.module('entertainmentAtlas')
             }
         };
         $scope.orderLyft = function() {
-            var url = 'lyft://ridetype?id=lyft&pickup[latitude]=37.764728&pickup[longitude]=-122.422999&destination[latitude]=37.7763592&destination[longitude]=-122.4242038';
+            console.log($scope.selectedLocation, 'LOC');
+            var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
             $window.location = url;
         };
 
