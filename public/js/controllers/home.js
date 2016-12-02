@@ -62,11 +62,9 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
-            var marker;
+            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lat = $scope.data[i].gsx$latitude.$t;
-                var long = $scope.data[i].gsx$longitude.$t;
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5>' + $scope.data[i].gsx$name.$t + '</h5>' +
@@ -81,10 +79,23 @@ angular.module('entertainmentAtlas')
                     .addTo(map)
                     .bindPopup(popInfo)
                     .on('click', function(e) {
-                        map.flyTo([e.target._latlng.lat, e.target._latlng.lng], 15, {
+                        lat = e.target._latlng.lat;
+                        lng = e.target._latlng.lng;
+                        latNorth = lat + 0.01;
+                        latSouth = lat - 0.01;
+                        lngEast = lng + 0.01;
+                        lngWest = lng - 0.01;
+                        corner1 = L.latLng(latNorth, lngEast),
+                        corner2 = L.latLng(latSouth, lngWest),
+                        bounds = L.latLngBounds(corner1, corner2);
+                        // TO DO: If at mobile screen widths, set paddingBottomRight = [0, 0]
+                        paddingBottomRight = [600, 0];
+                        map.flyToBounds(bounds, {
                             animate: true,
-                            duration: 2
+                            duration: 2,
+                            paddingBottomRight: paddingBottomRight, 
                         });
+
                     });
                 featureGroup.addLayer(marker);
             }
