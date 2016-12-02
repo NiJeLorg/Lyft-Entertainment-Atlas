@@ -393,7 +393,7 @@ a:hover {
             }
         }
     }
-    .location-main {
+    .location-content-wrapper {
         border-bottom: 1px solid #eae9e9;
         margin-top: 140px;
         max-height: 100vh;
@@ -401,21 +401,23 @@ a:hover {
         width: 100%;
         overflow-x: hidden;
         padding-bottom: 135px;
-        p {
-            padding: 0 30px;
-            font-family: 'Georgia', serif;
-            color: #2e2925;
-            font-size: 18px;
-            line-height: 30px;
-        }
-        .caption {
-            padding: 10px 30px;
-            font-size: 11px;
-            font-weight: 400;
-            color: #2e2925;
-            line-height: 16px;
-            font-family: 'Titillium Web', sans-serif;
-            border-bottom: 1px solid #eae9e9;
+        .location-main {
+            p {
+                padding: 0 30px;
+                font-family: 'Georgia', serif;
+                color: #2e2925;
+                font-size: 18px;
+                line-height: 30px;
+            }
+            .caption {
+                padding: 10px 30px;
+                font-size: 11px;
+                font-weight: 400;
+                color: #2e2925;
+                line-height: 16px;
+                font-family: 'Titillium Web', sans-serif;
+                border-bottom: 1px solid #eae9e9;
+            }
         }
         .location-footer {
             padding: 0 30px;
@@ -457,7 +459,7 @@ a:hover {
                     }
                 }
             }
-        }  
+        }
     }
 }
 
