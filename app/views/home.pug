@@ -17,11 +17,12 @@
       p {{locationItem.gsx$address.$t}}
     .location-header-close
       i.fa.fa-times-circle-o.fa-2x(ng-click='closeLocationModalAction()')
-  .location-main(ng-bind-html='locationItem.gsx$story.$t')
+  .location-content-wrapper
+    .location-main(ng-bind-html='locationItem.gsx$story.$t')
     .location-footer
       .get-lyft
         p Ready to go? Get a &thinsp;
-          a(href='lyft://ridetype?id=lyft&pickup[latitude]=37.764728&pickup[longitude]=-122.422999&destination[latitude]=37.7763592&destination[longitude]=-122.4242038') Lyft
+          a(href='https://www.lyft.com/') Lyft
           | &thinsp; from a friendly driver within minutes.
         button.book-a-ride(ng-click='orderLyft()') Book a ride!
       .social-media-links
