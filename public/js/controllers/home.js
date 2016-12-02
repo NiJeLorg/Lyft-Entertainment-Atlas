@@ -39,7 +39,6 @@ angular.module('entertainmentAtlas')
             }
         };
         var redirectStores = function() {
-            console.log(navigator.userAgent.toLowerCase());
             if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
                 window.location.href = 'https://play.google.com/store/apps/details?id=me.lyft.android';
             } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
@@ -49,13 +48,16 @@ angular.module('entertainmentAtlas')
             }
         };
         $scope.orderLyft = function() {
-            var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
-            try {
-                // $window.location.href = url;
-                window.location.assign("customprotocol://");
-            } catch (e) {
-                console.log(e);
-                redirectStores();
+            if (Modernizr.touch){
+                var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
+                try {
+                    $window.location.href = url;
+                } catch (e) {
+                    console.log(e);
+                    redirectStores();
+                }
+            } else {
+                window.location.href = 'https://www.lyft.com/';
             }
         };
 

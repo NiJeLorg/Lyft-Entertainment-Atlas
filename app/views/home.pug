@@ -22,21 +22,21 @@
     .location-footer
       .get-lyft
         p Ready to go? Get a &thinsp;
-          a(href='https://www.lyft.com/') Lyft
+          a(href='https://www.lyft.com/', target="_blank") Lyft
           | &thinsp; from a friendly driver within minutes.
         button.book-a-ride(ng-click='orderLyft()') Book a ride!
       .social-media-links
         .link
-          p Website
+          a(href='{{locationItem.gsx$website.$t}}', target="_blank") Website
         .link
           .fa.fa-facebook-official
-          p Facebook
+          a(href='{{locationItem.gsx$facebook.$t}}', target="_blank") Facebook
         .link
           .fa.fa-twitter
-          p Twitter
+          a(href='{{locationItem.gsx$twitter.$t}}', target="_blank") Twitter
         .link
           .fa.fa-instagram
-          p Instagram
+          a(href='{{locationItem.gsx$instagram.$t}}', target="_blank") Instagram
 
 footer
   .social-media-icons
