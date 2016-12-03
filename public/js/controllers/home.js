@@ -108,11 +108,11 @@ angular.module('entertainmentAtlas')
                 }
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
-                    '<h5 class="open-modal">' + $scope.data[i].gsx$name.$t + '</h5>' +
+                    '<h5 class="open-modal" data-id="' + i + '">' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
                     '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>' +
                     '</div>' +
-                    '<div class="popupInfo-image open-modal">' +
+                    '<div class="popupInfo-image open-modal" data-id="' + i + '">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
                     '</div>' +
                     '</div>';
@@ -164,7 +164,7 @@ angular.module('entertainmentAtlas')
         // attach listener to title and image in popup that launches modal
         $(document).on('click', '.open-modal', function(e) {
             console.log(e);
-            item = $scope.data[e.target.options.alt];
+            item = $scope.data[e.data.id];
             $scope.$apply(function () {
                 $scope.selectLocation(item);
                 $scope.openLocationModalAction(item);
