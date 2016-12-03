@@ -42,7 +42,6 @@ angular.module('entertainmentAtlas')
         };
         $scope.openLocationModal = false;
         $scope.openLocationModalAction = function(item) {
-            console.log(item);
             $scope.openLocationModal = true;
             $scope.locationItem = item;
         };
@@ -163,7 +162,6 @@ angular.module('entertainmentAtlas')
 
         // attach listener to title and image in popup that launches modal
         $(document).on('click', '.open-modal', function() {
-            console.log(this.dataset.id);
             var item = $scope.data[this.dataset.id];
             $scope.$apply(function () {
                 $scope.selectLocation(item);
