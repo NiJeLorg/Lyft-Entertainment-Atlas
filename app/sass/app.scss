@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 $DNAInfoBlackColor: #3E3E3B;
-$aboveMapZIndex:401;
+$aboveMapZIndex:801;
 $marginFromTop: 60px;
 * {
     font-family: 'Titillium Web', sans-serif;
@@ -286,10 +286,13 @@ a:hover {
     right: 0;
     width: 100%;
     background: #FFF;
-    overflow: hidden;
+    overflow-x: auto;
+    box-shadow: -2px -2px 10px #c9bebd;
     .navigation {
         border: 1px solid #f5f5f5;
         height: 44px;
+        width: 100%;
+        position: fixed;
         .col-xs-4 {
             p {
                 outline: none;
@@ -307,6 +310,8 @@ a:hover {
     height: calc(100vh - 80px);
     top: $marginFromTop + 20px;
     right: 20px;
+    overflow: auto;
+    box-shadow: none;
   }
 }
 
@@ -316,6 +321,8 @@ a:hover {
     height: calc(100vh - 90px);
     top: $marginFromTop + 30px;
     right: 30px;
+    overflow: auto;
+    box-shadow: none;
   }
 }
 
@@ -336,14 +343,17 @@ a:hover {
 }
 
 .location-panel .grid-list {
-    max-height: 100vh;
-    overflow-y: scroll;
-    width: 100%;
-    overflow-x: hidden;
-    padding-bottom: 135px;
+    height: 70px;
+    min-width: 350%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
     .col-xs-3 {
         padding: 0;
         height: 70px;
+        width: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -373,8 +383,18 @@ a:hover {
 
 @media screen and (min-width: 768px) {
   .location-panel .grid-list {
+    height: inherit;
+    max-height: 100vh;
+    min-width: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 135px;
+    position: inherit;
+    bottom: inherit;
     .col-xs-3 {
         height: 110px;
+        width: 110px;
     }
   }
 }
@@ -383,6 +403,7 @@ a:hover {
   .location-panel .grid-list {
     .col-xs-3 {
         height: 140px;
+        width: 140px;
     }
   }
 }
@@ -435,7 +456,7 @@ a:hover {
         overflow-y: scroll;
         width: 100%;
         overflow-x: hidden;
-        padding-bottom: 250px;
+        padding-bottom: 150px;
         .location-main {
             p {
                 padding: 0 15px;
@@ -480,7 +501,7 @@ a:hover {
                 color: #aba9a8;
                 .link {
                     display: inline-flex;
-                    width: 17%;
+                    width: 25%;
                     align-items: center;
                     border-right: 1px solid #eae9e9;
                     padding-left: 5px;
@@ -507,8 +528,8 @@ a:hover {
         width: 440px;
         height: calc(100vh - 80px);
         .location-header {
-            padding: 30px 25px;
-            width: 560px;
+            padding: 25px 30px;
+            width: 440px;
             .location-header-info {
                 h5 {
                     font-weight: 800;
@@ -534,9 +555,13 @@ a:hover {
             .location-footer {
                 padding: 0 30px;
             }
+            .social-media-links {
+                .link {
+                    width: 17%;
+                }
+            }
+
         }
-
-
     }
 }
 
@@ -547,7 +572,7 @@ a:hover {
         width: 560px;
         height: calc(100vh - 90px);
         .location-header {
-            padding: 30px 25px;
+            padding: 25px 30px;
             width: 560px;
             .location-header-info {
                 h5 {
@@ -572,9 +597,12 @@ a:hover {
             .location-footer {
                 padding: 0 30px;
             }
+            .social-media-links {
+                .link {
+                    width: 17%;
+                }
+            }
         }
-
-
     }
 }
 
