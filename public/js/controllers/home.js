@@ -119,7 +119,8 @@ angular.module('entertainmentAtlas')
                             paddingBottomRight: paddingBottomRight,
                         });
                         // load modal
-                        console.log($scope.data[e.target.options.alt], "scope data");
+                        $scope.openLocationPopup($scope.data[e.target.options.alt]);
+                        $scope.selectLocation($scope.data[e.target.options.alt]);
                         $scope.openLocationModalAction($scope.data[e.target.options.alt]);
 
 
