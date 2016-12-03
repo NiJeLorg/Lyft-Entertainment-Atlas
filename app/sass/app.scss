@@ -301,21 +301,21 @@ a:hover {
     }
 }
 
-@media screen and (min-width: 1024px) {
-  .location-panel {
-    width: 560px;
-    height: calc(100vh - $marginFromTop + 30px);
-    top: $marginFromTop + 30px;
-    right: 30px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .location-panel {
     width: 440px;
-    height: calc(100vh - $marginFromTop + 20px);
+    height: calc(100vh - 80px);
     top: $marginFromTop + 20px;
     right: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .location-panel {
+    width: 560px;
+    height: calc(100vh - 90px);
+    top: $marginFromTop + 30px;
+    right: 30px;
   }
 }
 
@@ -371,14 +371,6 @@ a:hover {
     }
 }
 
-@media screen and (min-width: 1024px) {
-  .location-panel .grid-list {
-    .col-xs-3 {
-        height: 140px;
-    }
-  }
-}
-
 @media screen and (min-width: 768px) {
   .location-panel .grid-list {
     .col-xs-3 {
@@ -387,6 +379,13 @@ a:hover {
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .location-panel .grid-list {
+    .col-xs-3 {
+        height: 140px;
+    }
+  }
+}
 
 .location-holder {
     position: absolute;
@@ -501,51 +500,12 @@ a:hover {
     }
 }
 
-
-@media screen and (min-width: 1024px) {
-    .location-holder {
-        top: $marginFromTop + 30px;
-        right: 30px;
-        width: 560px;
-        height: calc(100vh - $marginFromTop + 30px);
-        .location-header {
-            padding: 30px 25px;
-            width: 560px;
-            .location-header-info {
-                h5 {
-                    font-weight: 800;
-                    font-size: 28px;
-                    line-height: 34px;
-                }
-            }
-        }
-        .location-content-wrapper {
-            margin-top: 140px;
-            max-height: 100vh;
-            padding-bottom: 250px;
-            .location-main {
-                p {
-                    padding: 0 30px;
-                }
-                .caption {
-                    padding: 10px 30px;
-                }
-            }
-            .location-footer {
-                padding: 0 30px;
-            }
-        }
-
-
-    }
-}
-
 @media screen and (min-width: 768px) {
     .location-holder {
         top: $marginFromTop + 20px;
         right: 20px;
         width: 440px;
-        height: calc(100vh - $marginFromTop + 20px);
+        height: calc(100vh - 80px);
         .location-header {
             padding: 30px 25px;
             width: 560px;
@@ -566,6 +526,44 @@ a:hover {
                     padding: 0 30px;
                     font-size: 18px;
                     line-height: 30px;
+                }
+                .caption {
+                    padding: 10px 30px;
+                }
+            }
+            .location-footer {
+                padding: 0 30px;
+            }
+        }
+
+
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .location-holder {
+        top: $marginFromTop + 30px;
+        right: 30px;
+        width: 560px;
+        height: calc(100vh - 90px);
+        .location-header {
+            padding: 30px 25px;
+            width: 560px;
+            .location-header-info {
+                h5 {
+                    font-weight: 800;
+                    font-size: 28px;
+                    line-height: 34px;
+                }
+            }
+        }
+        .location-content-wrapper {
+            margin-top: 140px;
+            max-height: 100vh;
+            padding-bottom: 250px;
+            .location-main {
+                p {
+                    padding: 0 30px;
                 }
                 .caption {
                     padding: 10px 30px;
@@ -620,7 +618,7 @@ a:hover {
 footer {
     position: absolute;
     z-index: $aboveMapZIndex;
-    bottom: 20px;
+    bottom: 134px;
     left: 30px;
     .social-media-icons {
         cursor: pointer;
@@ -636,7 +634,7 @@ footer {
 
 @media screen and (min-width: 768px) {
     footer {
-        bottom: 134px;
+        bottom: 20px;
     }  
 }
 
