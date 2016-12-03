@@ -79,7 +79,7 @@ angular.module('entertainmentAtlas')
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
-            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight;
+            var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight, item;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var lyftUrl;
@@ -119,8 +119,11 @@ angular.module('entertainmentAtlas')
                             paddingBottomRight: paddingBottomRight,
                         });
                         // load modal
-                        $scope.selectLocation($scope.data[e.target.options.alt]);
-                        $scope.openLocationModalAction($scope.data[e.target.options.alt]);
+                        item = $scope.data[e.target.options.alt];
+                        $scope.$apply(function () {
+                            $scope.selectLocation(item);
+                            $scope.openLocationModalAction(item);
+                        });
 
 
                     });
