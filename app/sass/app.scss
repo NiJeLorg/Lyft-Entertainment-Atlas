@@ -281,10 +281,10 @@ a:hover {
 .location-panel {
     position: absolute;
     z-index: $aboveMapZIndex;
-    height: calc(100vh - 90px);
-    top: $marginFromTop + 30px;
-    right: 30px;
-    width: 560px;
+    height: 114px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
     background: #FFF;
     overflow: hidden;
     .navigation {
@@ -299,6 +299,24 @@ a:hover {
             background: #ddd;
         }
     }
+}
+
+@media screen and (min-width: 1024px) {
+  .location-panel {
+    width: 560px;
+    height: calc(100vh - $marginFromTop + 30px);
+    top: $marginFromTop + 30px;
+    right: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .location-panel {
+    width: 440px;
+    height: calc(100vh - $marginFromTop + 20px);
+    top: $marginFromTop + 20px;
+    right: 20px;
+  }
 }
 
 .navigation .col-xs-4 {
@@ -325,7 +343,7 @@ a:hover {
     padding-bottom: 135px;
     .col-xs-3 {
         padding: 0;
-        height: 140px;
+        height: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -353,28 +371,43 @@ a:hover {
     }
 }
 
+@media screen and (min-width: 1024px) {
+  .location-panel .grid-list {
+    .col-xs-3 {
+        height: 140px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .location-panel .grid-list {
+    .col-xs-3 {
+        height: 110px;
+  }
+}
+
+
 .location-holder {
     position: absolute;
     z-index: $aboveMapZIndex + 2;
-    top: $marginFromTop + 30px;
-    right: 30px;
-    width: 560px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
     background: #fff;
-    height: calc(100vh - 90px);
+    height: 100%;
     overflow: hidden;
     .location-header {
-        padding: 30px 25px;
+        padding: 15px;
         display: flex;
         position: fixed;
-        width: 560px;
+        width: 100%;
         background: white;
         justify-content: space-between;
         .location-header-info {
             h5 {
                 margin: 0;
-                font-weight: 800;
-                font-size: 28px;
-                line-height: 34px;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
                 color: #2e2925;
             }
             p {
@@ -404,14 +437,14 @@ a:hover {
         padding-bottom: 250px;
         .location-main {
             p {
-                padding: 0 30px;
+                padding: 0 15px;
                 font-family: 'Georgia', serif;
                 color: #2e2925;
                 font-size: 18px;
                 line-height: 30px;
             }
             .caption {
-                padding: 10px 30px;
+                padding: 10px 15px;
                 font-size: 11px;
                 font-weight: 400;
                 color: #2e2925;
@@ -421,7 +454,7 @@ a:hover {
             }
         }
         .location-footer {
-            padding: 0 30px;
+            padding: 0 15px;
             margin-top: 15px;
             .get-lyft {
                 border-bottom: 1px solid #eae9e9;
@@ -465,6 +498,86 @@ a:hover {
         }
     }
 }
+
+
+@media screen and (min-width: 1024px) {
+    .location-holder {
+        top: $marginFromTop + 30px;
+        right: 30px;
+        width: 560px;
+        height: calc(100vh - $marginFromTop + 30px);
+        .location-header {
+            padding: 30px 25px;
+            width: 560px;
+            .location-header-info {
+                h5 {
+                    font-weight: 800;
+                    font-size: 28px;
+                    line-height: 34px;
+                }
+            }
+        }
+        .location-content-wrapper {
+            margin-top: 140px;
+            max-height: 100vh;
+            padding-bottom: 250px;
+            .location-main {
+                p {
+                    padding: 0 30px;
+                }
+                .caption {
+                    padding: 10px 30px;
+                }
+            }
+            .location-footer {
+                padding: 0 30px;
+            }
+        }
+
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .location-holder {
+        top: $marginFromTop + 20px;
+        right: 20px;
+        width: 440px;
+        height: calc(100vh - $marginFromTop + 20px);
+        .location-header {
+            padding: 30px 25px;
+            width: 560px;
+            .location-header-info {
+                h5 {
+                    font-weight: 800;
+                    font-size: 28px;
+                    line-height: 34px;
+                }
+            }
+        }
+        .location-content-wrapper {
+            margin-top: 140px;
+            max-height: 100vh;
+            padding-bottom: 250px;
+            .location-main {
+                p {
+                    padding: 0 30px;
+                    font-size: 18px;
+                    line-height: 30px;
+                }
+                .caption {
+                    padding: 10px 30px;
+                }
+            }
+            .location-footer {
+                padding: 0 30px;
+            }
+        }
+
+
+    }
+}
+
 
 .popupInfo {
     display: flex;
@@ -517,6 +630,12 @@ footer {
             color: #59ADEB;
         }
     }
+}
+
+@media screen and (min-width: 768px) {
+    footer {
+        bottom: 134px;
+    }  
 }
 
 .marker {
