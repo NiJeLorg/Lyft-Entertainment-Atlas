@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 $DNAInfoBlackColor: #3E3E3B;
-$aboveMapZIndex:801;
+$aboveMapZIndex:1001;
 $marginFromTop: 60px;
 * {
     font-family: 'Titillium Web', sans-serif;
@@ -106,6 +106,10 @@ a:hover {
 
 .modal-body {
     padding: 0;
+}
+
+.close {
+    font-weight: normal;
 }
 
 // OWN STYLES //
@@ -312,6 +316,9 @@ a:hover {
     right: 20px;
     overflow: auto;
     box-shadow: none;
+    .navigation {
+        position: relative;
+    }
   }
 }
 
@@ -321,8 +328,6 @@ a:hover {
     height: calc(100vh - 90px);
     top: $marginFromTop + 30px;
     right: 30px;
-    overflow: auto;
-    box-shadow: none;
   }
 }
 
@@ -383,18 +388,17 @@ a:hover {
 
 @media screen and (min-width: 768px) {
   .location-panel .grid-list {
-    height: inherit;
+    height: auto;
     max-height: 100vh;
     min-width: 100%;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 135px;
-    position: inherit;
-    bottom: inherit;
+    position: relative;
     .col-xs-3 {
         height: 110px;
-        width: 110px;
+        width: 25%;
     }
   }
 }
@@ -403,7 +407,7 @@ a:hover {
   .location-panel .grid-list {
     .col-xs-3 {
         height: 140px;
-        width: 140px;
+        width: 25%;
     }
   }
 }
@@ -451,7 +455,7 @@ a:hover {
     }
     .location-content-wrapper {
         border-bottom: 1px solid #eae9e9;
-        margin-top: 140px;
+        margin-top: 100px;
         max-height: 100vh;
         overflow-y: scroll;
         width: 100%;
