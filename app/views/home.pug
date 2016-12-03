@@ -1,13 +1,13 @@
 .location-panel
   .navigation
-    .col-md-4
+    .col-xs-4
       p.all-venues(ng-click='setFilterType("all")') All Venues
-    .col-md-4
+    .col-xs-4
       p.music-venues(ng-click='setFilterType("music")') Music Venues
-    .col-md-4
+    .col-xs-4
       p.theater-venues(ng-click='setFilterType("theater")') Theater Venues
   .grid-list
-    .col-md-3(ng-repeat='item in data | filter:filterByVenueType' ng-click='openLocationPopup(item)')
+    .col-xs-3(ng-repeat='item in data | filter:filterByVenueType' ng-click='openLocationPopup(item)')
       .logo-image-parent(ng-click='selectLocation(item)')
         img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
 .location-holder(ng-show='openLocationModal')
