@@ -618,7 +618,7 @@ a:hover {
 footer {
     position: absolute;
     z-index: $aboveMapZIndex;
-    bottom: 20px;
+    bottom: 134px;
     left: 30px;
     .social-media-icons {
         cursor: pointer;
@@ -634,7 +634,7 @@ footer {
 
 @media screen and (min-width: 768px) {
     footer {
-        bottom: 134px;
+        bottom: 20px;
     }  
 }
 
