@@ -129,8 +129,14 @@ angular.module('entertainmentAtlas')
                         corner1 = L.latLng(latNorth, lngEast),
                             corner2 = L.latLng(latSouth, lngWest),
                             bounds = L.latLngBounds(corner1, corner2);
-                        // TO DO: If at mobile screen widths, set paddingBottomRight = [0, 0]
-                        paddingBottomRight = [600, 0];
+                        // At mobile screen widths, set paddingBottomRight = [0, 0]
+                        if ($('body').width() > 1024) {
+                            paddingBottomRight = [600, 0];
+                        } else if ($('body').width() > 768) {
+                            paddingBottomRight = [400, 0];
+                        } else {
+                            paddingBottomRight = [0, 0];
+                        }
                         map.flyToBounds(bounds, {
                             animate: true,
                             duration: 2,
