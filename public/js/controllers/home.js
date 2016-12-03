@@ -80,7 +80,7 @@ angular.module('entertainmentAtlas')
         };
 
         var L = window.L;
-        var map = new L.Map('map').setView([41.8914184, -87.6116459], 11);
+        var map = new L.Map('map').setView([41.897022, -87.609100], 12);
         L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png', {
             attribution: 'Positron'
         }).addTo(map);
