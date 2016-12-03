@@ -295,7 +295,7 @@ a:hover {
                 outline: none;
             }
         }
-        .col-xs-4:active, .col-xs-4:focus, .col-xs-4:hover {
+        .col-xs-4:active, .col-xs-4:focus, .col-xs-4:hover, .col-xs-4.active {
             background: #ddd;
         }
     }
@@ -323,7 +323,7 @@ a:hover {
     width: 100%;
     overflow-x: hidden;
     padding-bottom: 135px;
-    .col-md-3 {
+    .col-xs-3 {
         padding: 0;
         height: 140px;
         display: flex;

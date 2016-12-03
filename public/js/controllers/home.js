@@ -5,6 +5,10 @@ angular.module('entertainmentAtlas')
         $scope.selectedLocation = {};
         $scope.setFilterType = function(type) {
             $scope.filterType = type;
+            if ($('.all-venues').hasClass('active')) {
+                $('.all-venues').removeClass('active');
+            }
+            
         };
         $scope.filterByVenueType = function(item) {
             if ($scope.filterType === 'theater') {

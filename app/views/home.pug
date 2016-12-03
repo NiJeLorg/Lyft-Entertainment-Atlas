@@ -1,11 +1,11 @@
 .location-panel
   .navigation
-    .col-xs-4
-      p.all-venues(ng-click='setFilterType("all")') All Venues
-    .col-xs-4
-      p.music-venues(ng-click='setFilterType("music")') Music Venues
-    .col-xs-4
-      p.theater-venues(ng-click='setFilterType("theater")') Theater Venues
+    .col-xs-4.all-venues(ng-click='setFilterType("all")')
+      p All Venues
+    .col-xs-4.music-venues(ng-click='setFilterType("music")')
+      p Music Venues
+    .col-xs-4.theater-venues(ng-click='setFilterType("theater")')
+      p Theater Venues
   .grid-list
     .col-xs-3(ng-repeat='item in data | filter:filterByVenueType' ng-click='openLocationPopup(item)')
       .logo-image-parent(ng-click='selectLocation(item)')
