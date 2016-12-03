@@ -98,7 +98,7 @@ angular.module('entertainmentAtlas')
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
                     '</div>' +
                     '</div>';
-                marker = L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker, title: $scope.data[i].gsx$id.$t })
+                marker = L.marker([$scope.data[i].gsx$latitude.$t, $scope.data[i].gsx$longitude.$t], { icon: redMarker, title: $scope.data[i].gsx$id.$t, alt: i })
                     .addTo(map)
                     .bindPopup(popInfo)
                     .on('click', function(e) {
@@ -119,8 +119,8 @@ angular.module('entertainmentAtlas')
                             paddingBottomRight: paddingBottomRight,
                         });
                         // load modal
-                        console.log($scope.data[i], "scope data");
-                        $scope.openLocationModalAction($scope.data[i]);
+                        console.log($scope.data[e.target.options.alt], "scope data");
+                        $scope.openLocationModalAction($scope.data[e.target.options.alt]);
 
                     });
                 featureGroup.addLayer(marker);
