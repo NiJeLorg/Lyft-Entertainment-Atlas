@@ -82,7 +82,15 @@ a:hover {
 
 .modal {
     background: rgba(46, 41, 37, .8);
+    padding-left: 0px !important;
 }
+
+@media screen and (min-width: 768px) {
+    .modal {
+        padding-left: 15px;
+    }   
+}
+
 
 .modal-backdrop {
     background: none;
@@ -93,17 +101,24 @@ a:hover {
     border-radius: 2px;
     border: none;
     padding: 15px;
-    width: 600px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     box-shadow: none;
+}
+
+.modal-dialog {
+    margin: 0;
 }
 
 @media screen and (min-width: 768px) {
     .modal-content {
         padding: 30px;
-        width: 100%;
-        height: 100%;
+        width: 600px;
+        height: auto;
+    }
+    .modal-dialog {
+        margin: 10px;
     }
 }
 
