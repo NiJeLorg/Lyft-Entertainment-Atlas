@@ -133,9 +133,9 @@ angular.module('entertainmentAtlas')
                         if ($('body').width() > 1024) {
                             paddingBottomRight = [600, 0];
                         } else if ($('body').width() > 768) {
-                            paddingBottomRight = [400, 0];
+                            paddingBottomRight = [500, 0];
                         } else {
-                            paddingBottomRight = [0, 0];
+                            paddingBottomRight = [200, 0];
                         }
                         map.flyToBounds(bounds, {
                             animate: true,
