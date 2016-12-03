@@ -66,7 +66,7 @@ angular.module('entertainmentAtlas')
             }
         };
         $scope.orderLyft = function() {
-            if (Modernizr.touch){
+            if ($('body').width() < 1024) {
                 var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
                 try {
                     window.open(url, '_blank');
@@ -100,7 +100,7 @@ angular.module('entertainmentAtlas')
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var lyftUrl;
-                if (Modernizr.touch){
+                if ($('body').width() < 1024) {
                     var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
                 } else {
                     var lyftUrl = 'https://www.lyft.com/';
