@@ -8,7 +8,21 @@ angular.module('entertainmentAtlas')
             if ($('.all-venues').hasClass('active')) {
                 $('.all-venues').removeClass('active');
             }
-            
+            if ($('.music-venues').hasClass('active')) {
+                $('.music-venues').removeClass('active');
+            }
+            if ($('.theater-venues').hasClass('active')) {
+                $('.theater-venues').removeClass('active');
+            }
+            if (type === 'all') {
+                $('.all-venues').addClass('active');
+            }
+            if (type === 'music') {
+                $('.music-venues').addClass('active');
+            }
+            if (type === 'theater') {
+                $('.theater-venues').addClass('active');
+            }
         };
         $scope.filterByVenueType = function(item) {
             if ($scope.filterType === 'theater') {
