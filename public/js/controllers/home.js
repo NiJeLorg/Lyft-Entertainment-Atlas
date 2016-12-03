@@ -122,6 +122,7 @@ angular.module('entertainmentAtlas')
                         console.log($scope.data[e.target.options.alt], "scope data");
                         $scope.openLocationModalAction($scope.data[e.target.options.alt]);
 
+
                     });
                 featureGroup.addLayer(marker);
             }
