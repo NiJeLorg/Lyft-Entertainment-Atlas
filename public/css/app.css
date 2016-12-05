@@ -209,7 +209,7 @@ a:hover {
 .about-button-container .about-button {
   top: 90px;
   z-index: 1001;
-  position: absolute;
+  position: fixed;
   left: 30px;
   background-color: #fc5158;
   color: #fff;
@@ -319,7 +319,7 @@ a:hover {
     height: calc(100vh - 80px);
     top: 80px;
     right: 20px;
-    overflow: auto;
+    overflow: visible;
     box-shadow: none; }
     .location-panel .navigation {
       position: relative; } }
@@ -383,8 +383,8 @@ a:hover {
     max-height: 100vh;
     min-width: 100%;
     width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: visible;
+    overflow-x: visible;
     padding-bottom: 135px;
     position: relative; }
     .location-panel .grid-list .col-xs-3 {
@@ -398,7 +398,7 @@ a:hover {
 
 .location-holder {
   position: absolute;
-  z-index: 1003;
+  z-index: 1023;
   bottom: 0;
   right: 0;
   width: 100%;
@@ -433,6 +433,7 @@ a:hover {
     margin-top: 100px;
     max-height: 100vh;
     overflow-y: scroll;
+    background: #fff;
     width: 100%;
     overflow-x: hidden;
     padding-bottom: 150px; }
@@ -494,18 +495,22 @@ a:hover {
     top: 80px;
     right: 20px;
     width: 440px;
-    height: calc(100vh - 80px); }
+    height: calc(100vh - 80px);
+    z-index: 1001;
+    overflow: visible; }
     .location-holder .location-header {
       padding: 25px 30px;
+      position: absolute;
       width: 440px; }
       .location-holder .location-header .location-header-info h5 {
         font-weight: 800;
         font-size: 28px;
         line-height: 34px; }
     .location-holder .location-content-wrapper {
-      margin-top: 140px;
-      max-height: 100vh;
-      padding-bottom: 250px; }
+      margin-top: 125px;
+      max-height: initial;
+      padding-bottom: 0;
+      overflow: visible; }
       .location-holder .location-content-wrapper .location-main p {
         padding: 0 30px;
         font-size: 18px;
@@ -531,19 +536,15 @@ a:hover {
         font-weight: 800;
         font-size: 28px;
         line-height: 34px; }
-    .location-holder .location-content-wrapper {
-      margin-top: 140px;
-      max-height: 100vh;
-      padding-bottom: 250px; }
-      .location-holder .location-content-wrapper .location-main p {
-        padding: 0 30px; }
-      .location-holder .location-content-wrapper .location-main .caption {
-        padding: 10px 30px;
-        margin: 10px 30px; }
-      .location-holder .location-content-wrapper .location-footer {
-        padding: 0 30px; }
-      .location-holder .location-content-wrapper .social-media-links .link {
-        width: 17%; } }
+    .location-holder .location-content-wrapper .location-main p {
+      padding: 0 30px; }
+    .location-holder .location-content-wrapper .location-main .caption {
+      padding: 10px 30px;
+      margin: 10px 30px; }
+    .location-holder .location-content-wrapper .location-footer {
+      padding: 0 30px; }
+    .location-holder .location-content-wrapper .social-media-links .link {
+      width: 17%; } }
 
 .popupInfo {
   display: flex;
@@ -572,10 +573,14 @@ a:hover {
       height: 100%; }
 
 #map {
-  height: 100%; }
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0; }
 
 footer {
-  position: absolute;
+  position: fixed;
   z-index: 1001;
   bottom: 134px;
   left: 30px; }
