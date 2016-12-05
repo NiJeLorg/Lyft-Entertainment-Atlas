@@ -515,12 +515,11 @@ a:hover {
             }
         }
         .location-header-close {
-            i {
+            .close-location-modal {
+                width: 25px;
+                height: 25px;
                 cursor: pointer;
-                color: #d5d4d3;
-            }
-            i:hover {
-                color: #c0bebd
+                outline: none;
             }
         }
     }

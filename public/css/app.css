@@ -419,11 +419,11 @@ a:hover {
       color: #aba9a8;
       font-size: 18px;
       line-height: 30px; }
-    .location-holder .location-header .location-header-close i {
+    .location-holder .location-header .location-header-close .close-location-modal {
+      width: 25px;
+      height: 25px;
       cursor: pointer;
-      color: #d5d4d3; }
-    .location-holder .location-header .location-header-close i:hover {
-      color: #c0bebd; }
+      outline: none; }
   .location-holder .location-content-wrapper {
     border-bottom: 1px solid #eae9e9;
     margin-top: 100px;
