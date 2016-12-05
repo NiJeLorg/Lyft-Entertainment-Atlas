@@ -85,6 +85,10 @@ a:hover {
     padding-left: 0px !important;
 }
 
+.navigation {
+  background: #fff;
+}
+
 @media screen and (min-width: 768px) {
     .modal {
         padding-left: 15px;
@@ -166,7 +170,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
-    z-index: $aboveMapZIndex;
+    z-index: $aboveMapZIndex + 20;
     .brand-publisher-text {
         color: $DNAInfoBlackColor;
         font-weight: 600;
@@ -399,6 +403,7 @@ a:hover {
         height: calc(100vh - 90px);
         top: $marginFromTop + 30px;
         right: 30px;
+        background: transparent;
     }
 }
 

@@ -65,6 +65,9 @@ a:hover {
   background: rgba(46, 41, 37, 0.8);
   padding-left: 0px !important; }
 
+.navigation {
+  background: #fff; }
+
 @media screen and (min-width: 768px) {
   .modal {
     padding-left: 15px; } }
@@ -131,7 +134,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
-  z-index: 1001; }
+  z-index: 1021; }
   .brand-publisher .brand-publisher-text {
     color: #3E3E3B;
     font-weight: 600;
@@ -326,7 +329,8 @@ a:hover {
     width: 560px;
     height: calc(100vh - 90px);
     top: 90px;
-    right: 30px; } }
+    right: 30px;
+    background: transparent; } }
 
 .navigation .col-xs-4 {
   padding: 0;
