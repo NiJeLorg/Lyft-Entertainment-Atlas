@@ -61,6 +61,9 @@ a:hover {
     width: 80px;
     height: 80px; }
 
+.close {
+  opacity: 1; }
+
 .modal {
   background: rgba(46, 41, 37, 0.8);
   padding-left: 0px !important; }
@@ -517,6 +520,7 @@ a:hover {
         line-height: 30px; }
       .location-holder .location-content-wrapper .location-main .caption {
         padding: 10px 30px;
+        padding-left: 0;
         margin: 10px 30px; }
       .location-holder .location-content-wrapper .location-footer {
         padding: 0 30px; }
@@ -540,6 +544,7 @@ a:hover {
       padding: 0 30px; }
     .location-holder .location-content-wrapper .location-main .caption {
       padding: 10px 30px;
+      padding-left: 0;
       margin: 10px 30px; }
     .location-holder .location-content-wrapper .location-footer {
       padding: 0 30px; }

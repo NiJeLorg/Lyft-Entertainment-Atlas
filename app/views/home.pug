@@ -16,7 +16,6 @@
       h5 {{locationItem.gsx$name.$t}}
       p {{locationItem.gsx$address.$t}}
     .location-header-close
-      //- span.glyphicon.glyphicon-remove-circle.close(ng-click='closeLocationModalAction()')
       img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
   .location-content-wrapper
     .location-main(ng-bind-html='locationItem.gsx$story.$t')
