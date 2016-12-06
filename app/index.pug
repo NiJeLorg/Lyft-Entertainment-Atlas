@@ -31,16 +31,16 @@ html
                 .modal-main-text
                   p The Midwest's greatest live music destination is filled with neighborhood theaters, juke joints and concert halls that are just a ride away. Pick a destination and call a Lyft.
     #bookARide.modal.fade(tabindex='-1' role='dialog' aria-labelledby='aboutModalLabel')
-    .vertical-alignment-helper
-      .modal-dialog.vertical-align-center(role='document')
-        .modal-content
-          .modal-header
-            span.close(data-dismiss='modal')
-              img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
-            .brand-publisher-group
-              h4(id='aboutModalLabel') Book A Ride with 
-              img.lyft-logo(src='images/Lyft_Logo.svg')
-          .modal-body
-            .modal-main-text
-              p 
+      .vertical-alignment-helper
+        .modal-dialog.vertical-align-center(role='document')
+          .modal-content
+            .modal-header
+              span.close(data-dismiss='modal')
+                img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
+              .brand-publisher-group
+                h4(id='aboutModalLabel') Book A Ride with 
+                img.lyft-logo(src='images/Lyft_Logo.svg')
+            .modal-body
+              .modal-main-text
+                p 
     .map-holder(ui-view='')

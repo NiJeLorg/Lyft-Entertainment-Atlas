@@ -108,12 +108,19 @@ angular.module('entertainmentAtlas')
             var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight, item;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                var lyftButton, lyftUrl;
+                if ($('body').width() < 1024) {
+                    lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    lyftButton = '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>';
+                } else {
+                    lyftButton = '<a href="#" class="book-a-ride marker" onclick="openLyftPriceEstimateModal();">Book a ride!</a>';
+                }
+                
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5 class="open-modal" data-id="' + i + '">' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
-                    '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>' +
+                    lyftButton +
                     '</div>' +
                     '<div class="popupInfo-image open-modal" data-id="' + i + '">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
