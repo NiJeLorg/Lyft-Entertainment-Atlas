@@ -360,6 +360,83 @@ a:hover {
     }
 }
 
+
+#bookARide {
+    .vertical-alignment-helper {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .vertical-align-center {
+        display: block;
+        vertical-align: middle;
+    }
+    .modal-header {
+        display: block;
+    }
+    .modal-header h4 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 700;
+        margin: 0;
+    }
+    .modal-header i {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color: #d5d4d3;
+    }
+    .modal-header i:hover {
+        color: #c0bebd;
+    }
+    .modal-header .brand-publisher-group {
+        display: flex;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eae9e9;
+    }
+    .brand-publisher-group h4 {
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    .brand-publisher-group .lyft-logo {
+        height: 29px;
+    }
+    .modal-body .modal-main-text {
+        padding-top: 10px;
+        line-height: 1.8em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #bookARide {
+        .vertical-alignment-helper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+        .vertical-align-center {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .modal-header h4 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .brand-publisher-group h4 {
+            margin-top: 0px;
+        }
+        .brand-publisher-group .lyft-logo {
+            height: 40px;
+        }
+    }
+}
+
+
+
 .location-panel {
     position: absolute;
     z-index: $aboveMapZIndex;
