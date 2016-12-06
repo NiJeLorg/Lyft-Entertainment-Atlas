@@ -56,13 +56,23 @@ angular.module('entertainmentAtlas')
                 }
             }
         };
+        var openLyftPriceEstimateModal = function() {
+
+            console.log($scope.selectedLocation.gsx$latitude.$t, "Lat");
+            console.log($scope.selectedLocation.gsx$longitude.$t, "Lng");
+
+            // open the modal for price estimates
+            $('#bookARide').modal('show');
+
+        };
+
         var redirectStores = function() {
             if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
                 window.location.href = 'https://play.google.com/store/apps/details?id=me.lyft.android';
             } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
                 window.location.href = 'https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8';
             } else {
-                window.location.href = 'https://www.lyft.com/';
+                openLyftPriceEstimateModal();
             }
         };
         $scope.orderLyft = function() {
@@ -71,11 +81,10 @@ angular.module('entertainmentAtlas')
                 try {
                     window.open(url, '_blank');
                 } catch (e) {
-                    console.log(e);
                     redirectStores();
                 }
             } else {
-                window.open('https://www.lyft.com/', '_blank');
+                openLyftPriceEstimateModal();
             }
         };
 
@@ -99,12 +108,7 @@ angular.module('entertainmentAtlas')
             var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight, item;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lyftUrl;
-                if ($('body').width() < 1024) {
-                    var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
-                } else {
-                    var lyftUrl = 'https://www.lyft.com/';
-                }
+                var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5 class="open-modal" data-id="' + i + '">' + $scope.data[i].gsx$name.$t + '</h5>' +
