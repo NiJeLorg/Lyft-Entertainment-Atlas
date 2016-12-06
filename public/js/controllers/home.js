@@ -113,7 +113,7 @@ angular.module('entertainmentAtlas')
                     lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
                     lyftButton = '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>';
                 } else {
-                    lyftButton = '<a href="#" class="book-a-ride marker" onclick="openLyftPriceEstimateModal();">Book a ride!</a>';
+                    lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton">Book a ride!</a>';
                 }
                 
                 var popInfo = '<div class="popupInfo">' +
@@ -179,5 +179,16 @@ angular.module('entertainmentAtlas')
                 $scope.openLocationModalAction(item);
             });
         });
+
+        $(document).on('click', '.bookARideMapButton', function() {
+            var item = $scope.data[this.dataset.id];
+            $scope.$apply(function () {
+                $scope.selectLocation(item);
+                openLyftPriceEstimateModal();
+            });
+        });
+
+
+        
 
     });
