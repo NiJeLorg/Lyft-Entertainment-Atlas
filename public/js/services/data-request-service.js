@@ -115,12 +115,38 @@ angular.module('entertainmentAtlas')
                 data: data
             }).then(function success(resp) {
                 deferred.resolve(resp.data.access_token);
-                // $localStorage.accessToken = resp.data.access_token;
             }, function error(err) {
                 deferred.reject(err);
                 console.log(err);
             });
             return deferred.promise;
         };
+
+        service.getRideEstimate = function() {
+            var deferred = $q.defer();
+            var client_id = '4ujGa8RbFc5n';
+            var client_secret = 'ndUxKLmGVe8CPVhG7xqCDrz9SCk5s5hY';
+            var authdata = Base64.encode(client_id + ':' + client_secret);
+            var data = {
+                grant_type: 'client_credentials',
+                scope: 'public'
+            };
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+            $http({
+                method: 'POST',
+                url: 'https://api.lyft.com/oauth/token',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: data
+            }).then(function success(resp) {
+                deferred.resolve(resp.data.access_token);
+            }, function error(err) {
+                deferred.reject(err);
+                console.log(err);
+            });
+            return deferred.promise;
+        };
+
         return service;
     });

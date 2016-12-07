@@ -38,7 +38,6 @@ angular.module('entertainmentAtlas')
             }
         };
         $scope.selectLocation = function(location) {
-            console.log(location, "Location")
             $scope.selectedLocation = location;
         };
         $scope.openLocationModal = false;
@@ -111,7 +110,7 @@ angular.module('entertainmentAtlas')
             console.log(lyftAccessToken);
             $scope.lyftAccessToken = lyftAccessToken;
         });
-        
+
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
@@ -192,7 +191,6 @@ angular.module('entertainmentAtlas')
 
         $(document).on('click', '.bookARideMapButton', function() {
             var item = $scope.data[this.dataset.id];
-            console.log(item, "Item");
             $scope.$apply(function () {
                 $scope.selectLocation(item);
                 openLyftPriceEstimateModal();

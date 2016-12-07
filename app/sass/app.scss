@@ -410,6 +410,32 @@ a:hover {
         padding-top: 10px;
         line-height: 1.8em;
     }
+    .lyft-button {
+        color: #fff;
+        border-radius: 8px;
+        border: none;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 13px 20px;
+        outline: none;
+        height: 48px;
+        width: 160px;
+        background: -webkit-linear-gradient(top left, #FF00BF, #B80B8C);
+        background: -o-linear-gradient(top left, #FF00BF, #B80B8C);
+        background: linear-gradient(to bottom right, #FF00BF, #B80B8C);
+    }
+    .apple-app-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/apple-store.c9dcada1.svg);
+        width: 160px;
+        height: 48px;
+        border-radius: 8px;
+    }
+    .google-play-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
+        width: 160px;
+        height: 48px;
+        border-radius: 8px;
+    }
 }
 
 @media screen and (min-width: 768px) {

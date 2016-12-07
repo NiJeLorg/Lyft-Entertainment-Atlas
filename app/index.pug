@@ -38,9 +38,23 @@ html
               span.close(data-dismiss='modal')
                 img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
               .brand-publisher-group
-                h4(id='aboutModalLabel') Book A Ride with 
+                h4(id='aboutModalLabel') Get a Price Estimate for a 
                 img.lyft-logo(src='images/Lyft_Logo.svg')
             .modal-body
               .modal-main-text
-                p 
+                form
+                  div.form-group
+                    label(for='fromInput') Where are you coming from?
+                    input.form-control(id='fromInput' placeholder='Address') 
+                  div.form-group
+                    label(for='toInput') Destination
+                    input.form-control(id='toInput' placeholder='' disabled)
+                  button.lyft-button(type='submit') Get Estimate
+                div.price-estimate
+                  h4 Your ride estimate is 
+                    span.add-price $23.00
+                  a.lyft-button(href="https://www.lyft.com/signup" target="_blank") Sign Up Now
+                  a.apple-app-store-button(href="https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8" target="_blank")
+                  a.google-play-store-button(href="https://play.google.com/store/apps/details?id=me.lyft.android" target="_blank")
+
     .map-holder(ui-view='')
