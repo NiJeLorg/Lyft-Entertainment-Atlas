@@ -97,6 +97,7 @@ angular.module('entertainmentAtlas')
         };
 
         service.connectToLyft = function() {
+            var deferred = $q.defer();
             var client_id = '4ujGa8RbFc5n';
             var client_secret = 'ndUxKLmGVe8CPVhG7xqCDrz9SCk5s5hY';
             var authdata = Base64.encode(client_id + ':' + client_secret);
@@ -112,13 +113,14 @@ angular.module('entertainmentAtlas')
                     'Content-Type': 'application/json',
                 },
                 data: data
-            }).then(function(resp) {
-                $localStorage.accessToken = resp.data.access_token;
-                return resp.data.access_token;
-            }, function(err) {
+            }).then(function success(resp) {
+                deferred.resolve(resp.data.access_token);
+                // $localStorage.accessToken = resp.data.access_token;
+            }, function error(err) {
+                deferred.reject(err);
                 console.log(err);
-                return(err);
             });
+            return deferred.promise;
         };
         return service;
     });
