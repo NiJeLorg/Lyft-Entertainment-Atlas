@@ -49,8 +49,8 @@ html
                   div.form-group
                     label(for='toInput') Destination
                     input.form-control(id='toInput' placeholder='' disabled)
-                  button.lyft-button(type='submit') Get Estimate
-                div.price-estimate
+                  button.lyft-button(id='getEstimate' type='submit') Get Estimate
+                div.price-estimate.hidden
                   h1 Your ride estimate is 
                     span.add-price $23.00
                   div.button-group

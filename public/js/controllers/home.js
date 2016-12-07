@@ -200,6 +200,16 @@ angular.module('entertainmentAtlas')
             });
         });
 
+        $(document).on('click', '#getEstimate', function(e) {
+            e.preventDefault();
+            $scope.$apply(function () {
+                DataService.getRideEstimate().then(function(cost) {
+                    console.log(cost);
+                });
+            });
+        });
+        
+
 
         
 
