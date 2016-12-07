@@ -419,7 +419,6 @@ a:hover {
         border: none;
         font-weight: 700;
         font-size: 16px;
-        padding: 13px 20px;
         outline: none;
         height: 48px;
         width: 160px;
@@ -427,17 +426,28 @@ a:hover {
         background: -o-linear-gradient(top left, #FF00BF, #B80B8C);
         background: linear-gradient(to bottom right, #FF00BF, #B80B8C);
     }
+    .add-padding {
+        padding: 13px 20px;
+    }
     .apple-app-store-button {
         background-image: url(https://cdn.lyft.net/brochure/images/apple-store.c9dcada1.svg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         width: 160px;
         height: 48px;
         border-radius: 8px;
+        margin-left: 10px;
     }
     .google-play-store-button {
         background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         width: 160px;
         height: 48px;
         border-radius: 8px;
+        margin-left: 10px;
     }
 }
 
