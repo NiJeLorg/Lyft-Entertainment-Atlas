@@ -64,6 +64,8 @@ angular.module('entertainmentAtlas')
             // open the modal for price estimates
             $('#bookARide').modal('show');
 
+            // populate 
+
         };
 
         var redirectStores = function() {
@@ -106,7 +108,7 @@ angular.module('entertainmentAtlas')
             iconRetinaUrl: '../images/marker2x.png',
         });
 
-        DataService.connectToLyft().then(function(lyftAccessToken) {
+        DataService.connectToLyft().then(function( ) {
             console.log(lyftAccessToken);
             $scope.lyftAccessToken = lyftAccessToken;
         });
