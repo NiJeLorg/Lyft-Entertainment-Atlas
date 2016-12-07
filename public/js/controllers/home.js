@@ -59,8 +59,8 @@ angular.module('entertainmentAtlas')
         };
         var openLyftPriceEstimateModal = function() {
 
-            console.log($scope.selectedLocation.gsx$latitude.$t, "Lat");
-            console.log($scope.selectedLocation.gsx$longitude.$t, "Lng");
+            console.log($scope.selectedLocation, "Selected Location");
+            console.log($localStorage.accessToken, "access token");
 
             // open the modal for price estimates
             $('#bookARide').modal('show');
@@ -90,9 +90,14 @@ angular.module('entertainmentAtlas')
         };
 
         var L = window.L;
-        var map = new L.Map('map').setView([41.897022, -87.609100], 12);
+        var map = new L.Map('map');
+        if ($('body').width() > 768) {
+            map.setView([41.897022, -87.609100], 12);
+        } else {
+            map.setView([41.924688, -87.648754], 11);
+        }
         L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png', {
-            attribution: 'Positron'
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         }).addTo(map);
         var redMarker = new L.Icon({
             iconSize: [20, 32],
@@ -146,7 +151,7 @@ angular.module('entertainmentAtlas')
                         } else if ($('body').width() > 768) {
                             paddingBottomRight = [500, 0];
                         } else {
-                            paddingBottomRight = [200, 0];
+                            paddingBottomRight = [150, 0];
                         }
                         map.flyToBounds(bounds, {
                             animate: true,
