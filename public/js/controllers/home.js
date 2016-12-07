@@ -60,7 +60,7 @@ angular.module('entertainmentAtlas')
         var openLyftPriceEstimateModal = function() {
 
             console.log($scope.selectedLocation, "Selected Location");
-            console.log($localStorage.accessToken, "access token");
+            console.log($scope.lyftAccessToken, "access token");
 
             // open the modal for price estimates
             $('#bookARide').modal('show');
@@ -107,7 +107,11 @@ angular.module('entertainmentAtlas')
             iconRetinaUrl: '../images/marker2x.png',
         });
 
-        DataService.connectToLyft();
+        DataService.connectToLyft().then(function(lyftAccessToken) {
+            console.log(lyftAccessToken);
+            $scope.lyftAccessToken = lyftAccessToken;
+        });
+        
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();

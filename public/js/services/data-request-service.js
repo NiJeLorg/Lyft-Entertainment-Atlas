@@ -114,8 +114,10 @@ angular.module('entertainmentAtlas')
                 data: data
             }).then(function(resp) {
                 $localStorage.accessToken = resp.data.access_token;
+                return resp.data.access_token;
             }, function(err) {
                 console.log(err);
+                return(err);
             });
         };
         return service;
