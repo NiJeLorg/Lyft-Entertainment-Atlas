@@ -132,22 +132,32 @@ angular.module('entertainmentAtlas')
                 method: 'GET',
                 url: gURL,
             }).success(function(data) {
-                // get lat lon and pass to lyft api
-                var lat = data.results[0].geometry.location.lat;
-                var lng = data.results[0].geometry.location.lng;
-                var getURL = 'https://api.lyft.com/v1/cost?ride_type=lyft&start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_long;
-                $http.defaults.headers.common['Authorization'] = 'Bearer ' + $localStorage.access_token;
-                $http({
-                    method: 'GET',
-                    url: getURL,
-                }).then(function success(resp) {
-                    deferred.resolve(resp);
-                }, function error(err) {
-                    deferred.reject(err);
-                });
+                if (data.status === "OK") {
+                    // get lat lon and pass to lyft api
+                    var lat = data.results[0].geometry.location.lat;
+                    var lng = data.results[0].geometry.location.lng;
+                    var getURL = 'https://api.lyft.com/v1/cost?ride_type=lyft&start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_long;
+                    $http.defaults.headers.common['Authorization'] = 'Bearer ' + $localStorage.access_token;
+                    $http({
+                        method: 'GET',
+                        url: getURL,
+                    }).then(function success(resp) {
+                        deferred.resolve(resp);
+                    }, function error(err) {
+                        deferred.reject(err);
+                        // bad geocode
+                        $('.bad-address').removeClass('hidden');
+                    });                    
+                } else {
+                    // bad geocode
+                    $('.bad-address').removeClass('hidden');
+                }
+
 
             }).error(function error(err) {
                 console.log(err);
+                // bad geocode
+                $('.bad-address').removeClass('hidden');
             });
 
             return deferred.promise;
