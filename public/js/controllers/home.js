@@ -203,7 +203,8 @@ angular.module('entertainmentAtlas')
         $(document).on('click', '#getEstimate', function(e) {
             e.preventDefault();
             $scope.$apply(function () {
-                DataService.getRideEstimate().then(function(cost) {
+                console.log($scope.selectLocation);
+                DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t).then(function(cost) {
                     console.log(cost);
                 });
             });

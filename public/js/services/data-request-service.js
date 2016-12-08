@@ -122,9 +122,9 @@ angular.module('entertainmentAtlas')
             return deferred.promise;
         };
 
-        service.getRideEstimate = function() {
+        service.getRideEstimate = function(end_lat, end_lng) {
             delete $http.defaults.headers.common['Authorization'];
-            
+
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
@@ -147,7 +147,7 @@ angular.module('entertainmentAtlas')
                 console.log(lat, "lat");
                 console.log(lng, "lng");
                 var authdata = Base64.encode($scope.lyftAccessToken);
-                var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
+                var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ end_lat +'&end_lng='+ end_lng;
                 console.log(getURL);
                 $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
                 $http({
