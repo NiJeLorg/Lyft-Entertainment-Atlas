@@ -135,8 +135,11 @@ angular.module('entertainmentAtlas')
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
+                console.log(lat, "lat");
+                console.log(lng, "lng");
                 var authdata = Base64.encode($scope.lyftAccessToken);
                 var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
+                console.log(getURL);
                 $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
                 $http({
                     method: 'GET',
