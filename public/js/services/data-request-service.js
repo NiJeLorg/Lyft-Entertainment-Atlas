@@ -133,7 +133,7 @@ angular.module('entertainmentAtlas')
             $http({
                 method: 'GET',
                 url: googleURL,
-            }).then(function success(data) {
+            }).success(function(data) {
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
@@ -152,7 +152,7 @@ angular.module('entertainmentAtlas')
                     deferred.reject(err);
                 });
 
-            }, function error(err) {
+            }).error(function(err) {
                 console.log(err);
             });
 
