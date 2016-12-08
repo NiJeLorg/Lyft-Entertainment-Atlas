@@ -128,9 +128,11 @@ angular.module('entertainmentAtlas')
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
             var address = $('#fromInput').text();
             var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            var googleURL = trunkURL + params;
+            console.log(googleURL);
             $http({
                 method: 'GET',
-                url: trunkURL + params,
+                url: googleURL,
             }).then(function success(data) {
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
