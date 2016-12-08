@@ -128,7 +128,7 @@ angular.module('entertainmentAtlas')
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
             var address = $('#fromInput').val().replace(/ /g, '+');
             //var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            //var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
             // var params = {
             //     address: address,
             //     key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
