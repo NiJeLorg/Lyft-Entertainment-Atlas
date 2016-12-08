@@ -114,6 +114,7 @@ angular.module('entertainmentAtlas')
                 },
                 data: data
             }).then(function success(resp) {
+                $localStorage.access_token = resp.data.access_token;
                 deferred.resolve(resp.data.access_token);
             }, function error(err) {
                 deferred.reject(err);
@@ -122,31 +123,24 @@ angular.module('entertainmentAtlas')
             return deferred.promise;
         };
 
-        service.getRideEstimate = function() {
+
+        service.getRideEstimate = function(end_lat, end_long) {
+            delete $http.defaults.headers.common['Authorization'];
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
             var address = $('#fromInput').val().replace(/ /g, '+');
-            //var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            //var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            // var params = {
-            //     address: address,
-            //     key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
-            // };
+            var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            var gURL = trunkURL + params;
             $http({
                 method: 'GET',
-                url: trunkURL,
-                params: params
+                url: gURL,
             }).success(function(data) {
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
-                console.log(lat, "lat");
-                console.log(lng, "lng");
-                var authdata = Base64.encode($scope.lyftAccessToken);
-                var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
-                console.log(getURL);
-                $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
+                var getURL = 'https://api.lyft.com/v1/cost?start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_long;
+                $http.defaults.headers.common['Authorization'] = 'Bearer ' + $localStorage.access_token;
                 $http({
                     method: 'GET',
                     url: getURL,

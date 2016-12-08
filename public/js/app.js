@@ -6,6 +6,8 @@
 
         $urlRouterProvider.otherwise('/');
 
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
         $stateProvider
             .state('home', {
                 url: '/',
@@ -19,8 +21,8 @@
     }]);
 
     entertainmentAtlas.run(['$window', function($window) {
-        // $window.onload = function() {
-        //     $('#aboutModal').modal('show');
-        // };
+        $window.onload = function() {
+            $('#aboutModal').modal('show');
+        };
     }]);
 }());
