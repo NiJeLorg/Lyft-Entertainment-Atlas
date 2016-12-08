@@ -126,7 +126,7 @@ angular.module('entertainmentAtlas')
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-            var address = $('#fromInput').val();
+            var address = Base64.encode($('#fromInput').val());
             var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
             var googleURL = trunkURL + params;
             console.log(googleURL);
