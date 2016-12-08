@@ -196,8 +196,8 @@ angular.module('entertainmentAtlas')
             $scope.$apply(function () {
                 DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t).then(function(cost) {
                     console.log(cost);
-                    var min_cost = (cost.data.cost_estimates[0].estimated_cost_cents_min / 60).toFixed(2);
-                    var max_cost = (cost.data.cost_estimates[0].estimated_cost_cents_max / 60).toFixed(2);
+                    var min_cost = (cost.data.cost_estimates[0].estimated_cost_cents_min / 100).toFixed(2);
+                    var max_cost = (cost.data.cost_estimates[0].estimated_cost_cents_max / 100).toFixed(2);
                     $('.min-price').text('$' + min_cost);
                     $('.max-price').text('$' + max_cost);
                     $('.price-estimate').removeClass('hidden');

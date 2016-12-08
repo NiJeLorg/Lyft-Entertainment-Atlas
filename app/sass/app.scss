@@ -410,6 +410,9 @@ a:hover {
         padding-top: 10px;
         line-height: 1.8em;
     }
+    .price-estimate h3 {
+        margin-top: 0;
+    }
     .button-group {
         margin-top: 30px;
     }
@@ -437,7 +440,7 @@ a:hover {
         width: 160px;
         height: 48px;
         border-radius: 8px;
-        margin-left: 10px;
+        margin-left: 30px;
     }
     .google-play-store-button {
         background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
@@ -447,7 +450,7 @@ a:hover {
         width: 160px;
         height: 48px;
         border-radius: 8px;
-        margin-left: 10px;
+        margin-left: 30px;
     }
 }
 
