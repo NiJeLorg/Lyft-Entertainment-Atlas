@@ -38,7 +38,6 @@ angular.module('entertainmentAtlas')
             }
         };
         $scope.selectLocation = function(location) {
-            console.log(location, "Location")
             $scope.selectedLocation = location;
         };
         $scope.openLocationModal = false;
@@ -60,10 +59,13 @@ angular.module('entertainmentAtlas')
         var openLyftPriceEstimateModal = function() {
 
             console.log($scope.selectedLocation, "Selected Location");
-            console.log($localStorage.accessToken, "access token");
+            console.log($scope.lyftAccessToken, "access token");
 
             // open the modal for price estimates
             $('#bookARide').modal('show');
+
+            // populate 
+            $('#toInput').attr('placeholder', $scope.selectedLocation.gsx$address.$t);
 
         };
 
@@ -78,7 +80,7 @@ angular.module('entertainmentAtlas')
         };
         $scope.orderLyft = function() {
             if ($('body').width() < 1024) {
-                var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
+                var url = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
                 try {
                     window.open(url, '_blank');
                 } catch (e) {
@@ -107,7 +109,11 @@ angular.module('entertainmentAtlas')
             iconRetinaUrl: '../images/marker2x.png',
         });
 
-        DataService.connectToLyft();
+        DataService.connectToLyft().then(function(lyftAccessToken) {
+            console.log(lyftAccessToken);
+            $scope.lyftAccessToken = lyftAccessToken;
+        });
+
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
@@ -116,7 +122,7 @@ angular.module('entertainmentAtlas')
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var lyftButton, lyftUrl;
                 if ($('body').width() < 1024) {
-                    lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    lyftUrl = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
                     lyftButton = '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>';
                 } else {
                     lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton" data-id="' + i + '">Book a ride!</a>';
@@ -188,12 +194,21 @@ angular.module('entertainmentAtlas')
 
         $(document).on('click', '.bookARideMapButton', function() {
             var item = $scope.data[this.dataset.id];
-            console.log(item, "Item");
             $scope.$apply(function () {
                 $scope.selectLocation(item);
                 openLyftPriceEstimateModal();
             });
         });
+
+        $(document).on('click', '#getEstimate', function(e) {
+            e.preventDefault();
+            $scope.$apply(function () {
+                DataService.getRideEstimate().then(function(cost) {
+                    console.log(cost);
+                });
+            });
+        });
+        
 
 
         
