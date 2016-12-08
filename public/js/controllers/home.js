@@ -64,7 +64,7 @@ angular.module('entertainmentAtlas')
             // open the modal for price estimates
             $('#bookARide').modal('show');
 
-            // populate 
+            // populate
             $('#toInput').attr('placeholder', $scope.selectedLocation.gsx$address.$t);
 
         };
@@ -127,7 +127,7 @@ angular.module('entertainmentAtlas')
                 } else {
                     lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton" data-id="' + i + '">Book a ride!</a>';
                 }
-                
+
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5 class="open-modal" data-id="' + i + '">' + $scope.data[i].gsx$name.$t + '</h5>' +
@@ -165,9 +165,9 @@ angular.module('entertainmentAtlas')
                             paddingBottomRight: paddingBottomRight,
                         });
                         // load modal on click if not mobile width
-                        if ($('body').width() > 768) { 
+                        if ($('body').width() > 768) {
                             item = $scope.data[e.target.options.alt];
-                            $scope.$apply(function () {
+                            $scope.$apply(function() {
                                 $scope.selectLocation(item);
                                 $scope.openLocationModalAction(item);
                             });
@@ -186,7 +186,7 @@ angular.module('entertainmentAtlas')
         // attach listener to title and image in popup that launches modal
         $(document).on('click', '.open-modal', function() {
             var item = $scope.data[this.dataset.id];
-            $scope.$apply(function () {
+            $scope.$apply(function() {
                 $scope.selectLocation(item);
                 $scope.openLocationModalAction(item);
             });
@@ -194,7 +194,7 @@ angular.module('entertainmentAtlas')
 
         $(document).on('click', '.bookARideMapButton', function() {
             var item = $scope.data[this.dataset.id];
-            $scope.$apply(function () {
+            $scope.$apply(function() {
                 $scope.selectLocation(item);
                 openLyftPriceEstimateModal();
             });
@@ -202,15 +202,11 @@ angular.module('entertainmentAtlas')
 
         $(document).on('click', '#getEstimate', function(e) {
             e.preventDefault();
-            $scope.$apply(function () {
-                DataService.getRideEstimate().then(function(cost) {
+            $scope.$apply(function() {
+                console.log($scope.selectedLocation);
+                DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t ).then(function(cost) {
                     console.log(cost);
                 });
             });
         });
-        
-
-
-        
-
     });
