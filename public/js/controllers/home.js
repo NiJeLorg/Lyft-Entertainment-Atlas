@@ -56,33 +56,50 @@ angular.module('entertainmentAtlas')
                 }
             }
         };
+        var openLyftPriceEstimateModal = function() {
+
+            console.log($scope.selectedLocation, "Selected Location");
+            console.log($scope.lyftAccessToken, "access token");
+
+            // open the modal for price estimates
+            $('#bookARide').modal('show');
+
+            // populate 
+            $('#toInput').attr('placeholder', $scope.selectedLocation.gsx$address.$t);
+
+        };
+
         var redirectStores = function() {
             if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
                 window.location.href = 'https://play.google.com/store/apps/details?id=me.lyft.android';
             } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
                 window.location.href = 'https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8';
             } else {
-                window.location.href = 'https://www.lyft.com/';
+                openLyftPriceEstimateModal();
             }
         };
         $scope.orderLyft = function() {
             if ($('body').width() < 1024) {
-                var url = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
+                var url = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
                 try {
                     window.open(url, '_blank');
                 } catch (e) {
-                    console.log(e);
                     redirectStores();
                 }
             } else {
-                window.open('https://www.lyft.com/', '_blank');
+                openLyftPriceEstimateModal();
             }
         };
 
         var L = window.L;
-        var map = new L.Map('map').setView([41.897022, -87.609100], 12);
+        var map = new L.Map('map');
+        if ($('body').width() > 768) {
+            map.setView([41.897022, -87.609100], 12);
+        } else {
+            map.setView([41.924688, -87.648754], 11);
+        }
         L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png', {
-            attribution: 'Positron'
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         }).addTo(map);
         var redMarker = new L.Icon({
             iconSize: [20, 32],
@@ -92,24 +109,30 @@ angular.module('entertainmentAtlas')
             iconRetinaUrl: '../images/marker2x.png',
         });
 
-        DataService.connectToLyft();
+        DataService.connectToLyft().then(function(lyftAccessToken) {
+            console.log(lyftAccessToken);
+            $scope.lyftAccessToken = lyftAccessToken;
+        });
+
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
             var featureGroup = L.featureGroup();
             var marker, lat, lng, latNorth, latSouth, lngEast, lngWest, corner1, corner2, bounds, paddingBottomRight, item;
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
-                var lyftUrl;
+                var lyftButton, lyftUrl;
                 if ($('body').width() < 1024) {
-                    var lyftUrl = 'lyft://ridetype?id=lyft&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    lyftUrl = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    lyftButton = '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>';
                 } else {
-                    var lyftUrl = 'https://www.lyft.com/';
+                    lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton" data-id="' + i + '">Book a ride!</a>';
                 }
+                
                 var popInfo = '<div class="popupInfo">' +
                     '<div class="popupInfo-location">' +
                     '<h5 class="open-modal" data-id="' + i + '">' + $scope.data[i].gsx$name.$t + '</h5>' +
                     '<p>' + $scope.data[i].gsx$address.$t + '</p>' +
-                    '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>' +
+                    lyftButton +
                     '</div>' +
                     '<div class="popupInfo-image open-modal" data-id="' + i + '">' +
                     '<img src="' + imagesUrl + $scope.data[i].gsx$image.$t + '" class="marker-image">' +
@@ -134,7 +157,7 @@ angular.module('entertainmentAtlas')
                         } else if ($('body').width() > 768) {
                             paddingBottomRight = [500, 0];
                         } else {
-                            paddingBottomRight = [200, 0];
+                            paddingBottomRight = [150, 0];
                         }
                         map.flyToBounds(bounds, {
                             animate: true,
@@ -168,5 +191,26 @@ angular.module('entertainmentAtlas')
                 $scope.openLocationModalAction(item);
             });
         });
+
+        $(document).on('click', '.bookARideMapButton', function() {
+            var item = $scope.data[this.dataset.id];
+            $scope.$apply(function () {
+                $scope.selectLocation(item);
+                openLyftPriceEstimateModal();
+            });
+        });
+
+        $(document).on('click', '#getEstimate', function(e) {
+            e.preventDefault();
+            $scope.$apply(function () {
+                DataService.getRideEstimate().then(function(cost) {
+                    console.log(cost);
+                });
+            });
+        });
+        
+
+
+        
 
     });

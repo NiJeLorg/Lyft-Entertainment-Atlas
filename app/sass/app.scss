@@ -168,8 +168,10 @@ a:hover {
 .brand-publisher {
     width: 100%;
     height: 60px;
-    box-shadow: 0px 3px 0px rgba(201, 190, 189, 0.5);
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+    border-radius: 1px;
     position: fixed;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -358,6 +360,119 @@ a:hover {
         }
     }
 }
+
+
+#bookARide {
+    .vertical-alignment-helper {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .vertical-align-center {
+        display: block;
+        vertical-align: middle;
+    }
+    .modal-header {
+        display: block;
+    }
+    .modal-header h4 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 700;
+        margin: 0;
+    }
+    .modal-header i {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color: #d5d4d3;
+    }
+    .modal-header i:hover {
+        color: #c0bebd;
+    }
+    .modal-header .brand-publisher-group {
+        display: flex;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+    }
+    .brand-publisher-group h4 {
+        margin-right: 10px;
+    }
+    .brand-publisher-group .lyft-logo {
+        height: 29px;
+    }
+    .modal-body {
+        border-top: 1px solid #eae9e9;
+    }
+    .modal-body .modal-main-text {
+        padding-top: 10px;
+        line-height: 1.8em;
+    }
+    .button-group {
+        margin-top: 30px;
+    }
+    .lyft-button {
+        color: #fff;
+        border-radius: 8px;
+        border: none;
+        font-weight: 700;
+        font-size: 16px;
+        outline: none;
+        height: 48px;
+        width: 160px;
+        background: -webkit-linear-gradient(top left, #FF00BF, #B80B8C);
+        background: -o-linear-gradient(top left, #FF00BF, #B80B8C);
+        background: linear-gradient(to bottom right, #FF00BF, #B80B8C);
+    }
+    .add-padding {
+        padding: 13px 20px;
+    }
+    .apple-app-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/apple-store.c9dcada1.svg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 160px;
+        height: 48px;
+        border-radius: 8px;
+        margin-left: 10px;
+    }
+    .google-play-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 160px;
+        height: 48px;
+        border-radius: 8px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #bookARide {
+        .vertical-alignment-helper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+        .vertical-align-center {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .modal-header h4 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .brand-publisher-group .lyft-logo {
+            height: 40px;
+        }
+    }
+}
+
+
 
 .location-panel {
     position: absolute;
