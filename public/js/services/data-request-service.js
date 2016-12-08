@@ -126,67 +126,38 @@ angular.module('entertainmentAtlas')
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-            var address = $('#fromInput').val().replace(/ /g, '+');
-            var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            var googleURL = trunkURL + params;
-            $.ajax({
-                type: "GET",
-                url: googleURL,
-                success: function(data){
-                    if (data.status == 'OK') {
-                        // get lat lon and pass to lyft api
-                        var lat = data.results[0].geometry.location.lat;
-                        var lng = data.results[0].geometry.location.lng;
-                        console.log(lat, "lat");
-                        console.log(lng, "lng");
-                        var authdata = Base64.encode($scope.lyftAccessToken);
-                        var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
-                        console.log(getURL);
-                        $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
-                        $http({
-                            method: 'GET',
-                            url: getURL,
-                        }).then(function success(resp) {
-                            deferred.resolve(resp);
-                        }, function error(err) {
-                            deferred.reject(err);
-                        });                  
-                    } else {
-                        // handle poor geocode
-                    }
+            var address = $('#fromInput').val();
+            //var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            var params = {
+                address: address,
+                key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
+            };
+            $http({
+                method: 'GET',
+                url: trunkURL,
+                params: params
+            }).success(function(data) {
+                // get lat lon and pass to lyft api
+                var lat = data.results[0].geometry.location.lat;
+                var lng = data.results[0].geometry.location.lng;
+                console.log(lat, "lat");
+                console.log(lng, "lng");
+                var authdata = Base64.encode($scope.lyftAccessToken);
+                var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
+                console.log(getURL);
+                $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
+                $http({
+                    method: 'GET',
+                    url: getURL,
+                }).then(function success(resp) {
+                    deferred.resolve(resp);
+                }, function error(err) {
+                    deferred.reject(err);
+                });
 
-                },
-                error: function(e){ 
-                    // handle errors
-                    console.log(e);                 
-                }
+            }).error(function error(err) {
+                console.log(err);
             });
-
-            // $http({
-            //     method: 'GET',
-            //     url: googleURL,
-            // }).success(function(data) {
-            //     // get lat lon and pass to lyft api
-            //     var lat = data.results[0].geometry.location.lat;
-            //     var lng = data.results[0].geometry.location.lng;
-            //     console.log(lat, "lat");
-            //     console.log(lng, "lng");
-            //     var authdata = Base64.encode($scope.lyftAccessToken);
-            //     var getURL = 'https://api.lyft.com/v1/cost?start_lat='+lat+'&start_lng='+lng+'&end_lat='+ $scope.selectedLocation.gsx$latitude.$t +'&end_lng='+ $scope.selectedLocation.gsx$longitude.$t;
-            //     console.log(getURL);
-            //     $http.defaults.headers.common['Authorization'] = 'Bearer ' + authdata;
-            //     $http({
-            //         method: 'GET',
-            //         url: getURL,
-            //     }).then(function success(resp) {
-            //         deferred.resolve(resp);
-            //     }, function error(err) {
-            //         deferred.reject(err);
-            //     });
-
-            // }).error(function(err) {
-            //     console.log(err);
-            // });
 
             return deferred.promise;
         };
