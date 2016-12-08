@@ -126,12 +126,13 @@ angular.module('entertainmentAtlas')
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-            var address = $('#fromInput').val();
+            var address = $('#fromInput').val().replace(/ /g, '+');
             //var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            var params = {
-                address: address,
-                key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
-            };
+            var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            // var params = {
+            //     address: address,
+            //     key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
+            // };
             $http({
                 method: 'GET',
                 url: trunkURL,
