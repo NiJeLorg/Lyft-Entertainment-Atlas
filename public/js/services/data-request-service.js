@@ -127,16 +127,17 @@ angular.module('entertainmentAtlas')
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
             var address = $('#fromInput').val().replace(/ /g, '+');
-            //var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
-            //var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            var params = '?address='+address+'&key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
+            // var params = 'address='+address+', key=AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA';
             // var params = {
             //     address: address,
             //     key: 'AIzaSyBQxrEbrvIkajyXTw4fR6mXoP5HwmZPlaA'
             // };
+            var gURL = trunkURL + params;
             $http({
                 method: 'GET',
-                url: trunkURL,
-                params: params
+                url: gURL,
+                // params: params
             }).success(function(data) {
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
