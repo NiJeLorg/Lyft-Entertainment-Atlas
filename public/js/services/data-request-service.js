@@ -97,7 +97,6 @@ angular.module('entertainmentAtlas')
         };
 
         service.connectToLyft = function() {
-            var deferred = $q.defer();
             var client_id = '4ujGa8RbFc5n';
             var client_secret = 'ndUxKLmGVe8CPVhG7xqCDrz9SCk5s5hY';
             var authdata = Base64.encode(client_id + ':' + client_secret);
@@ -115,12 +114,9 @@ angular.module('entertainmentAtlas')
                 data: data
             }).then(function success(resp) {
                 $localStorage.access_token = resp.data.access_token;
-                deferred.resolve(resp.data.access_token);
             }, function error(err) {
-                deferred.reject(err);
                 console.log(err);
             });
-            return deferred.promise;
         };
 
 
@@ -139,7 +135,7 @@ angular.module('entertainmentAtlas')
                 // get lat lon and pass to lyft api
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
-                var getURL = 'https://api.lyft.com/v1/cost?start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_long;
+                var getURL = 'https://api.lyft.com/v1/cost?ride_type=lyft&start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_long;
                 $http.defaults.headers.common['Authorization'] = 'Bearer ' + $localStorage.access_token;
                 $http({
                     method: 'GET',

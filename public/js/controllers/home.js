@@ -57,16 +57,10 @@ angular.module('entertainmentAtlas')
             }
         };
         var openLyftPriceEstimateModal = function() {
-
-            console.log($scope.selectedLocation, "Selected Location");
-            console.log($scope.lyftAccessToken, "access token");
-
             // open the modal for price estimates
             $('#bookARide').modal('show');
-
             // populate
             $('#toInput').attr('placeholder', $scope.selectedLocation.gsx$address.$t);
-
         };
 
         var redirectStores = function() {
@@ -109,10 +103,7 @@ angular.module('entertainmentAtlas')
             iconRetinaUrl: '../images/marker2x.png',
         });
 
-        DataService.connectToLyft().then(function(lyftAccessToken) {
-            console.log(lyftAccessToken);
-            $scope.lyftAccessToken = lyftAccessToken;
-        });
+        DataService.connectToLyft();
 
         DataService.fetchData().then(function(data) {
             $scope.data = data.data.feed.entry;
@@ -203,10 +194,14 @@ angular.module('entertainmentAtlas')
         $(document).on('click', '#getEstimate', function(e) {
             e.preventDefault();
             $scope.$apply(function () {
-                console.log($scope.selectLocation);
                 DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t).then(function(cost) {
                     console.log(cost);
+                    $('.price-estimate').removeClass('hidden');
                 });
             });
         });
+
+        $('#bookARide').on('hidden.bs.modal', function (e) {
+            $('.price-estimate').addClass('hidden');
+        })
     });
