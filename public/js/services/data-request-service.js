@@ -123,6 +123,8 @@ angular.module('entertainmentAtlas')
         };
 
         service.getRideEstimate = function() {
+            delete $http.defaults.headers.common['Authorization'];
+            
             var deferred = $q.defer();
             // geocode address first
             var trunkURL = 'https://maps.googleapis.com/maps/api/geocode/json';
