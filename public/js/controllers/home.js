@@ -197,13 +197,17 @@ angular.module('entertainmentAtlas')
             $('.bad-address').addClass('hidden');            
             $scope.$apply(function () {
                 DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t).then(function(cost) {
-                    console.log(cost);
-                    $('.bad-address').addClass('hidden');
-                    var min_cost = (cost.data.cost_estimates[0].estimated_cost_cents_min / 100).toFixed(2);
-                    var max_cost = (cost.data.cost_estimates[0].estimated_cost_cents_max / 100).toFixed(2);
-                    $('.min-price').text('$' + min_cost);
-                    $('.max-price').text('$' + max_cost);
-                    $('.price-estimate').removeClass('hidden');
+                    if (cost.data.cost_estimates[0].can_request_ride) {
+                        $('.price-estimate').addClass('hidden');
+                        $('.bad-address').removeClass('hidden'); 
+                    } else {
+                        $('.bad-address').addClass('hidden');
+                        var min_cost = (cost.data.cost_estimates[0].estimated_cost_cents_min / 100).toFixed(2);
+                        var max_cost = (cost.data.cost_estimates[0].estimated_cost_cents_max / 100).toFixed(2);
+                        $('.min-price').text('$' + min_cost);
+                        $('.max-price').text('$' + max_cost);
+                        $('.price-estimate').removeClass('hidden');                        
+                    }
                 });
             });
         });
