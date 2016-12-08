@@ -193,6 +193,8 @@ angular.module('entertainmentAtlas')
 
         $(document).on('click', '#getEstimate', function(e) {
             e.preventDefault();
+            $('.price-estimate').addClass('hidden');
+            $('.bad-address').addClass('hidden');            
             $scope.$apply(function () {
                 DataService.getRideEstimate($scope.selectedLocation.gsx$latitude.$t, $scope.selectedLocation.gsx$longitude.$t).then(function(cost) {
                     console.log(cost);
@@ -209,6 +211,5 @@ angular.module('entertainmentAtlas')
         $('#bookARide').on('hidden.bs.modal', function (e) {
             $('.price-estimate').addClass('hidden');
             $('.bad-address').addClass('hidden');
-
         })
     });
