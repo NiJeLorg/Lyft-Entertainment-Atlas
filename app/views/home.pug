@@ -16,7 +16,7 @@
       h5 {{locationItem.gsx$name.$t}}
       p {{locationItem.gsx$address.$t}}
     .location-header-close
-      img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
+      img.close-location-modal.close(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
   .location-content-wrapper
     .location-main(ng-bind-html='locationItem.gsx$story.$t')
     .location-footer

@@ -22,7 +22,9 @@
 
     entertainmentAtlas.run(['$window', function($window) {
         $window.onload = function() {
-            $('#aboutModal').modal('show');
+            setTimeout(function() {
+                $('#aboutModal').modal('show');
+            }, 100);
         };
     }]);
 }());

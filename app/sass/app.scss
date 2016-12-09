@@ -34,7 +34,7 @@ a:hover {
 }
 
 .leaflet-popup-content-wrapper {
-    border-radius: 0px;
+    border-radius: 4px;
 }
 
 .leaflet-popup-tip-container {
@@ -57,7 +57,7 @@ a:hover {
         }
         p {
             margin: 0;
-            font-family: 'Georgia';
+            font-family: Georgia, Times, "Times New Roman", serif;
             color: #aba9a8;
             font-size: 14px;
             font-weight: 400;
@@ -168,7 +168,7 @@ a:hover {
 .brand-publisher {
     width: 100%;
     height: 60px;
-    box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 0px rgba(201, 190, 189, 0.5);
     border-radius: 1px;
     position: fixed;
     top: 0;
@@ -212,10 +212,12 @@ a:hover {
 
 .brand-publisher {
     .dropdown-menu {
-        width: 14%;
         width: 270px;
         padding: 15px;
-        left: -129px;
+        left: -30px;
+        top: 22px;
+        border: 0;
+        border-radius: 0;
         h5 {
             font-weight: 700;
             display: flex;
@@ -231,13 +233,13 @@ a:hover {
         content: '';
         position: absolute;
         border-style: solid;
-        border-width: 0 9px 14px;
-        border-color: grey transparent;
+        border-width: 0 12px 12px;
+        border-color: #777 transparent;
         display: block;
         width: 0;
         z-index: 1;
-        top: -14px;
-        left: 126px;
+        top: -12px;
+        left: 26px;
     }
 }
 
@@ -317,14 +319,14 @@ a:hover {
             border-bottom: 1px solid #eae9e9;
         }
         .brand-publisher-group p {
-            margin-right: 10px;
-            margin-top: 10px;
             color: $DNAInfoBlackColor;
             font-weight: 600;
             letter-spacing: .05em;
             font-size: 12px;
+            margin: 0;
         }
         .brand-publisher-group .lyft-logo {
+            margin-left: 10px;
             height: 29px;
         }
         .modal-body .modal-main-text {
@@ -350,9 +352,6 @@ a:hover {
                 font-size: 28px;
                 font-weight: 700;
                 margin: 0;
-            }
-            .brand-publisher-group p {
-                margin-top: 0px;
             }
             .brand-publisher-group .lyft-logo {
                 height: 40px;
@@ -393,7 +392,7 @@ a:hover {
     .modal-header .brand-publisher-group {
         display: flex;
         align-items: center;
-        padding-top: 10px;
+        padding-top: 0;
         padding-bottom: 15px;
         margin-bottom: 10px;
     }
@@ -410,24 +409,32 @@ a:hover {
         padding-top: 10px;
         line-height: 1.8em;
     }
-    .price-estimate h3 {
-        margin-top: 0;
+    .price-estimate {
+        border: solid 1px #eae9e9;
     }
+    .price-estimate p {
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .price-estimate h1 {
+        margin: 0;
+    } 
     .button-group {
         margin-top: 30px;
     }
     .lyft-button {
+        background-color: #ff00bf;
         color: #fff;
-        border-radius: 8px;
+        border-radius: 2px;
         border: none;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 13px;
+        padding: 0 10px;
         outline: none;
-        height: 48px;
-        width: 160px;
-        background: -webkit-linear-gradient(top left, #FF00BF, #B80B8C);
-        background: -o-linear-gradient(top left, #FF00BF, #B80B8C);
-        background: linear-gradient(to bottom right, #FF00BF, #B80B8C);
+        height: 44px;
+    }
+    .lyft-button:hover {
+        background: #e500ac;
     }
     .add-padding {
         padding: 13px 20px;
@@ -437,8 +444,8 @@ a:hover {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        width: 160px;
-        height: 48px;
+        width: 146px;
+        height: 44px;
         border-radius: 8px;
         margin-left: 30px;
     }
@@ -447,10 +454,10 @@ a:hover {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        width: 160px;
-        height: 48px;
-        border-radius: 8px;
-        margin-left: 30px;
+        width: 146px;
+        height: 44px;
+        border-radius: 2px;
+        margin-left: 10px;
     }
 }
 
@@ -513,6 +520,7 @@ a:hover {
         right: 20px;
         overflow: visible;
         box-shadow: none;
+        background: transparent;
         .navigation {
             position: relative;
         }
@@ -525,7 +533,6 @@ a:hover {
         height: calc(100vh - 90px);
         top: $marginFromTop + 30px;
         right: 30px;
-        background: transparent;
     }
 }
 
@@ -635,10 +642,11 @@ a:hover {
                 color: #2e2925;
             }
             p {
-                font-family: 'Georgia', serif;
+                font-family: Georgia, Times, "Times New Roman", serif;
                 color: #aba9a8;
                 font-size: 18px;
                 line-height: 30px;
+                margin: 0;
             }
         }
         .location-header-close {
@@ -658,7 +666,7 @@ a:hover {
         background: #fff;
         width: 100%;
         overflow-x: hidden;
-        padding-bottom: 150px;
+        padding-bottom: 100px;
         .location-main {
             img {
                 border-bottom: 1px solid #eae9e9;
@@ -666,14 +674,14 @@ a:hover {
             }
             p {
                 padding: 0 15px;
-                font-family: 'Georgia', serif;
+                font-family: Georgia, Times, "Times New Roman", serif;
                 color: #2e2925;
                 font-size: 18px;
                 line-height: 30px;
             }
             .caption {
                 padding: 10px 0;
-                margin: 10px 15px;
+                margin: 0 15px 10px;
                 font-size: 11px;
                 font-weight: 400;
                 color: #2e2925;
@@ -686,6 +694,7 @@ a:hover {
             padding: 0 15px;
             margin-top: 15px;
             .get-lyft {
+                border-top: 1px solid #eae9e9;
                 border-bottom: 1px solid #eae9e9;
                 p {
                     font-size: 18px;
@@ -742,14 +751,14 @@ a:hover {
             width: 440px;
             .location-header-info {
                 h5 {
-                    font-weight: 800;
+                    font-weight: 700;
                     font-size: 28px;
                     line-height: 34px;
                 }
             }
         }
         .location-content-wrapper {
-            margin-top: 125px;
+            margin-top: 115px;
             max-height: initial;
             padding-bottom: 0;
             overflow: visible;
@@ -762,7 +771,7 @@ a:hover {
                 .caption {
                     padding: 10px 30px;
                     padding-left: 0;
-                    margin: 10px 30px;
+                    margin: 0 30px 10px;
                 }
             }
             .location-footer {
@@ -784,35 +793,7 @@ a:hover {
         width: 560px;
         height: calc(100vh - 90px);
         .location-header {
-            padding: 25px 30px;
             width: 560px;
-            .location-header-info {
-                h5 {
-                    font-weight: 800;
-                    font-size: 28px;
-                    line-height: 34px;
-                }
-            }
-        }
-        .location-content-wrapper {
-            .location-main {
-                p {
-                    padding: 0 30px;
-                }
-                .caption {
-                    padding: 10px 30px;
-                    padding-left: 0;
-                    margin: 10px 30px;
-                }
-            }
-            .location-footer {
-                padding: 0 30px;
-            }
-            .social-media-links {
-                .link {
-                    width: 17%;
-                }
-            }
         }
     }
 }
@@ -821,17 +802,18 @@ a:hover {
     display: flex;
     padding: 15px;
     .popupInfo-location {
+        width: 176px;
         margin-right: 15px;
         h5 {
             margin-top: 0;
             margin-bottom: 0;
-            font-weight: 800;
+            font-weight: 700;
             color: #2e2925;
             font-size: 18px;
             line-height: 24px;
         }
         p {
-            font-family: 'Georgia', serif;
+            font-family: Georgia, Times, "Times New Roman", serif;
             margin-top: 0;
             font-size: 14px;
             color: #aba9a8;
@@ -870,6 +852,8 @@ footer {
             height: 45px;
             display: flex;
             justify-content: center;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
             a {
                 color: #fff;
                 display: inline-flex;
