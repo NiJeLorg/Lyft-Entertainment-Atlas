@@ -95,6 +95,7 @@ angular.module('entertainmentAtlas')
         });
 
         // set up deeplinking checks
+        var deeplink = window.deeplink;
         deeplink.setup({
             iOS: {
                 appName: "lyft-on-demand-ridesharing",
