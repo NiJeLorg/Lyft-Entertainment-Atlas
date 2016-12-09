@@ -25,6 +25,7 @@ angular.module('entertainmentAtlas')
             }
             // scroll navigation to the far left on mobile
             if ($('body').width() < 768) {
+                console.log($('.grid-list'));
                 $('.grid-list').scrollLeft(0);
             }
         };
