@@ -234,7 +234,7 @@ a:hover {
         position: absolute;
         border-style: solid;
         border-width: 0 12px 12px;
-        border-color: #777 transparent;
+        border-color: #fff transparent;
         display: block;
         width: 0;
         z-index: 1;
@@ -410,9 +410,10 @@ a:hover {
         line-height: 1.8em;
     }
     .price-estimate {
-        border: solid 1px #eae9e9;
+        border-top: solid 1px #eae9e9;
     }
     .price-estimate p {
+        padding-top: 10px;
         font-weight: 700;
         font-size: 14px;
     }
@@ -444,18 +445,18 @@ a:hover {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        width: 146px;
-        height: 44px;
+        width: 150px;
+        height: 45px;
         border-radius: 8px;
-        margin-left: 30px;
+        margin-left: 10px;
     }
     .google-play-store-button {
         background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        width: 146px;
-        height: 44px;
+        width: 150px;
+        height: 45px;
         border-radius: 2px;
         margin-left: 10px;
     }
