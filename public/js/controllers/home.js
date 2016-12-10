@@ -25,7 +25,7 @@ angular.module('entertainmentAtlas')
             }
             // scroll navigation to the far left on mobile
             if ($('body').width() < 768) {
-                $('html, body').animate({scrollLeft: $('.grid-list').offset().left}, 800);
+                $('.grid-list').animate({scrollLeft: $('.grid-list').offset().left}, 800);
             }
         };
         $scope.filterByVenueType = function(item) {
