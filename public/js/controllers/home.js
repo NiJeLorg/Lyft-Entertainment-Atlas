@@ -27,6 +27,8 @@ angular.module('entertainmentAtlas')
             if ($('body').width() < 768) {
                 console.log($('.grid-list').offset().left);
                 console.log($('.grid-list').scrollLeft());
+                console.log($('.location-panel').scrollLeft());
+
                 $('.grid-list').animate({scrollLeft: $('.grid-list').offset().left}, 800);
             }
         };
