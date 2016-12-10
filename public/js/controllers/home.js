@@ -115,9 +115,9 @@ angular.module('entertainmentAtlas')
             for (var i = 0; i < $scope.data.length; i++) {
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var lyftButton, lyftUrl;
-                if ($('body').width() < 1024) {
+                if ($('body').width() < 768) {
                     lyftUrl = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
-                    lyftButton = '<a href="' + lyftUrl + '" class="book-a-ride marker" target="_blank">Book a ride!</a>';
+                    lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButtonMobile" data-url="'+lyftUrl+'">Book a ride!</a>';
                 } else {
                     lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton" data-id="' + i + '">Book a ride!</a>';
                 }
@@ -185,6 +185,10 @@ angular.module('entertainmentAtlas')
                 $scope.selectLocation(item);
                 $scope.openLocationModalAction(item);
             });
+        });
+
+        $(document).on('click', '.bookARideMapButtonMobile', function() {
+            deeplink.open(this.dataset.url);
         });
 
         $(document).on('click', '.bookARideMapButton', function() {
