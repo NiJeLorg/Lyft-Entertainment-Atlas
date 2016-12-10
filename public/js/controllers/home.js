@@ -29,7 +29,7 @@ angular.module('entertainmentAtlas')
                 console.log($('.grid-list').scrollLeft());
                 console.log($('.location-panel').scrollLeft());
 
-                $('.grid-list').animate({scrollLeft: $('.grid-list').offset().left}, 800);
+                $('.location-panel').animate({scrollLeft: $('.grid-list').offset().left}, 800);
             }
         };
         $scope.filterByVenueType = function(item) {
