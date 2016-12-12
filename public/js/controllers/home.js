@@ -70,7 +70,16 @@ angular.module('entertainmentAtlas')
         $scope.orderLyft = function() {
             if ($('body').width() < 768) {
                 var url = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
-                deeplink.open(url);
+                if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
+                    deeplink.open(url);
+                } else {
+                    try {
+                        window.open(url, '_blank');
+                    } catch (e) {
+                        window.open('https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8', '_blank');
+                    }
+                }
+
             } else {
                 openLyftPriceEstimateModal();
             }
