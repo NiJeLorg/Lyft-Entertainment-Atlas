@@ -453,7 +453,7 @@ a:hover {
 
 .location-panel .grid-list {
   height: 70px;
-  min-width: 350%;
+  min-width: 500%;
   overflow-x: scroll;
   overflow-y: hidden;
   padding-bottom: 0px;
