@@ -1,0 +1,49 @@
+.location-panel
+  .navigation
+    .col-xs-4.all-venues.active(ng-click='setFilterType("all")')
+      p All Venues
+    .col-xs-4.music-venues(ng-click='setFilterType("music")')
+      p Music Venues
+    .col-xs-4.theater-venues(ng-click='setFilterType("theater")')
+      p Theater Venues
+  .grid-list
+    .col-xs-3(ng-repeat='item in data | filter:filterByVenueType' ng-click='openLocationPopup(item)')
+      .logo-image-parent(ng-click='selectLocation(item)')
+        img(ng-src='https://editorial-chi.dnainfo.com/interactives/entertainment/img/{{item.gsx$image.$t}}' ng-click='openLocationModalAction(item)')
+.location-holder(ng-show='openLocationModal')
+  .location-header
+    .location-header-info
+      h5 {{locationItem.gsx$name.$t}}
+      p {{locationItem.gsx$address.$t}}
+    .location-header-close
+      img.close-location-modal.close(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
+  .location-content-wrapper
+    .location-main(ng-bind-html='locationItem.gsx$story.$t')
+    .location-footer
+      .get-lyft
+        p Ready to go? Get a &thinsp;
+          a(href='https://www.lyft.com/', target="_blank") Lyft
+          | &thinsp; from a friendly driver within minutes.
+        button.book-a-ride(ng-click='orderLyft()') Book a ride!
+      .social-media-links
+        .link
+          a(href='{{locationItem.gsx$website.$t}}', target="_blank") Website
+        .link
+          .fa.fa-facebook-official
+          a(href='{{locationItem.gsx$facebook.$t}}', target="_blank") Facebook
+        .link
+          .fa.fa-twitter
+          a(href='{{locationItem.gsx$twitter.$t}}', target="_blank") Twitter
+        .link
+          .fa.fa-instagram
+          a(href='{{locationItem.gsx$instagram.$t}}', target="_blank") Instagram
+
+footer
+  .social-media-icons
+    .icon-holder.icon-holder-facebook
+      a(socialshare, socialshare-provider='facebook', socialshare-type='feed', socialshare-text='DNAinfo Lyft Atlas' socialshare-url='https://qa-visualizations.dnainfo.com/atlas' socialshare-via='254382224980024')
+        i.fa.fa-facebook-official.fa-2x
+    .icon-holder.icon-holder-twitter
+      a(socialshare, socialshare-provider="twitter" socialshare-hashtags="DNAinfo, Lyft" socialshare-url='https://qa-visualizations.dnainfo.com/atlas')
+        i.fa.fa-twitter.fa-2x
+#map

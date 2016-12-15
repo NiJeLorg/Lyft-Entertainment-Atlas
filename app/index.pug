@@ -1,0 +1,71 @@
+html
+  include shared/head
+  body(ng-app='entertainmentAtlas')
+    header.brand-publisher
+      .dropdown
+        img.info-svg.dropdown-toggle(src='images/info.svg' data-toggle='dropdown')
+        .dropdown-menu
+          h5
+            img.info-svg(src='images/info.svg')
+            | What's this?
+          p This content is presented by a DNAinfo advertiser; it was not produced by the editorial staff.
+            a(href='https://www.dnainfo.com/chicago/about-us/our-team/sales' target='_blank') &thinsp; Contact our sales team
+            | &thinsp; to get your business in front of local consumers. More questions? Email &thinsp;
+            a(href='mailto:info@dnainfo.com') info@dnainfo.com
+            |.
+      p.brand-publisher-text BRAND PUBLISHER:
+      img.lyft-logo(src='images/Lyft_Logo.svg')
+    .about-button-container
+      button.about-button(data-toggle='modal' data-target='#aboutModal') About
+      #aboutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='aboutModalLabel')
+        .vertical-alignment-helper
+          .modal-dialog.vertical-align-center(role='document')
+            .modal-content
+              .modal-header
+                span.close(data-dismiss='modal')
+                  img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
+                h4(id='aboutModalLabel') Live Enterainment Atlas for Chicago
+              .modal-body
+                .brand-publisher-group
+                  p.brand-publisher-text BRAND PUBLISHER:
+                  img.lyft-logo(src='images/Lyft_Logo.svg')
+                .modal-main-text
+                  p The Midwest's greatest live music destination is filled with neighborhood theaters, juke joints and concert halls that are just a ride away. Pick a destination and call a Lyft.
+    #bookARide.modal.fade(tabindex='-1' role='dialog' aria-labelledby='aboutModalLabel')
+      .vertical-alignment-helper
+        .modal-dialog.vertical-align-center(role='document')
+          .modal-content
+            .modal-header
+              span.close(data-dismiss='modal')
+                img.close-location-modal(src='images/X_Circle_ICON2_BLACK.svg' ng-click='closeLocationModalAction()')
+              .brand-publisher-group
+                h4(id='aboutModalLabel') Get a Price Estimate for a 
+                img.lyft-logo(src='images/Lyft_Logo.svg')
+            .modal-body
+              .modal-main-text
+                form
+                  div.form-group
+                    label(for='fromInput') Where are you coming from?
+                    input.form-control(id='fromInput' placeholder='Address') 
+                  div.form-group
+                    label(for='toInput') Destination
+                    input.form-control(id='toInput' placeholder='' disabled)
+                  button.lyft-button(id='getEstimate' type='submit') Get Estimate
+                div.bad-address.hidden
+                  h3 We are not able to provide a price estimate for the address you entered. Please try again.
+                  div.button-group
+                    a.lyft-button.add-padding.btn(href="https://www.lyft.com/signup" target="_blank") Sign Up Now
+                    a.apple-app-store-button.btn(href="https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8" target="_blank")
+                    a.google-play-store-button.btn(href="https://play.google.com/store/apps/details?id=me.lyft.android" target="_blank")
+                div.price-estimate.hidden
+                  p Price estimate
+                  h1 
+                    span.min-price 
+                    span  - 
+                    span.max-price
+                  div.button-group
+                    a.lyft-button.add-padding.btn(href="https://www.lyft.com/signup" target="_blank") Sign Up Now
+                    a.apple-app-store-button.btn(href="https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8" target="_blank")
+                    a.google-play-store-button.btn(href="https://play.google.com/store/apps/details?id=me.lyft.android" target="_blank")
+
+    .map-holder(ui-view='')

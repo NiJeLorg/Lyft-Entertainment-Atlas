@@ -1,0 +1,886 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
+$DNAInfoBlackColor: #3E3E3B;
+$aboveMapZIndex:1001;
+$marginFromTop: 60px;
+* {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+// OVERIDE LIBRARIES STYLES //
+.leaflet-left .leaflet-control {
+    margin-left: 30px;
+    margin-top: $marginFromTop + 30px + 44px + 20px;
+}
+
+.leaflet-popup {
+    left: -49px !important;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+}
+
+.leaflet-popup-close-button {
+    display: none;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 4px;
+}
+
+.leaflet-popup-tip-container {
+    left: 12%;
+}
+
+.marker-popup-content {
+    display: flex;
+    padding: 15px;
+    .marker-popup-info {
+        margin-right: 15px;
+        h2 {
+            margin: 0;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: #2e2925;
+            line-height: 24px;
+            margin-bottom: 2px;
+        }
+        p {
+            margin: 0;
+            font-family: Georgia, Times, "Times New Roman", serif;
+            color: #aba9a8;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+        button {
+            height: 30px;
+            background: #ff00bf;
+            border-radius: 2px;
+            padding: 0 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Titillium Web';
+        }
+    }
+    .marker-popupimage {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.close {
+  opacity: 1;
+}
+
+.modal {
+    background: rgba(46, 41, 37, .8);
+    padding-left: 0px !important;
+}
+
+.navigation {
+    background: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        padding-left: 15px;
+    }
+}
+
+.modal-backdrop {
+    background: none;
+    pointer-events: none;
+}
+
+.modal-content {
+    border-radius: 2px;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+.modal-dialog {
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-content {
+        padding: 30px;
+        width: 600px;
+        height: auto;
+    }
+    .modal-dialog {
+        margin: 10px;
+    }
+}
+
+.modal-header {
+    padding: 0;
+    display: flex;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.close {
+    font-weight: normal;
+    font-size: 25px;
+    color: #d5d4d3;
+}
+
+.close:focus,
+.close:hover {
+    color: #c0bebd;
+}
+
+// OWN STYLES //
+.book-a-ride {
+    background: #ff00bf;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0 10px;
+    border-radius: 2px;
+    height: 30px;
+}
+
+.book-a-ride:hover {
+    background: #e500ac;
+}
+
+.brand-publisher {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 3px 0px rgba(201, 190, 189, 0.5);
+    border-radius: 1px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: $aboveMapZIndex + 20;
+    .brand-publisher-text {
+        color: $DNAInfoBlackColor;
+        font-weight: 600;
+        letter-spacing: .05em;
+        font-size: 12px;
+        margin: 0;
+    }
+}
+
+.bubble {
+    position: relative;
+    width: 300px;
+    height: 120px;
+    padding: 0px;
+    background: red;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 14px;
+    border-color: red transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -14px;
+    left: 135px;
+}
+
+.brand-publisher {
+    .dropdown-menu {
+        width: 270px;
+        padding: 15px;
+        left: -30px;
+        top: 22px;
+        border: 0;
+        border-radius: 0;
+        h5 {
+            font-weight: 700;
+            display: flex;
+            margin: 0;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        p {
+            line-height: 22px;
+        }
+    }
+    .dropdown-menu:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 12px 12px;
+        border-color: #fff transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        top: -12px;
+        left: 26px;
+    }
+}
+
+.info-svg {
+    width: 15px;
+    height: 15px;
+}
+
+.brand-publisher .info-svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.brand-publisher .lyft-logo {
+    margin-left: 10px;
+}
+
+.lyft-logo {
+    height: 40px;
+}
+
+.about-button-container {
+    .about-button {
+        top: $marginFromTop + 30px;
+        z-index: $aboveMapZIndex;
+        position: fixed;
+        left: 30px;
+        background-color: #fc5158;
+        color: #fff;
+        border-radius: 2px;
+        border: none;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 0 10px;
+        outline: none;
+        height: 44px;
+    }
+    .about-button:hover {
+        background: #ef4d54;
+    }
+    #aboutModal {
+        .vertical-alignment-helper {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        .vertical-align-center {
+            display: block;
+            vertical-align: middle;
+        }
+        .modal-header {
+            display: block;
+        }
+        .modal-header h4 {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .modal-header i {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            color: #d5d4d3;
+        }
+        .modal-header i:hover {
+            color: #c0bebd;
+        }
+        .modal-body .brand-publisher-group {
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eae9e9;
+        }
+        .brand-publisher-group p {
+            color: $DNAInfoBlackColor;
+            font-weight: 600;
+            letter-spacing: .05em;
+            font-size: 12px;
+            margin: 0;
+        }
+        .brand-publisher-group .lyft-logo {
+            margin-left: 10px;
+            height: 29px;
+        }
+        .modal-body .modal-main-text {
+            padding-top: 10px;
+            line-height: 1.8em;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .about-button-container {
+        #aboutModal {
+            .vertical-alignment-helper {
+                display: table;
+                height: 100%;
+                width: 100%;
+            }
+            .vertical-align-center {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .modal-header h4 {
+                font-size: 28px;
+                font-weight: 700;
+                margin: 0;
+            }
+            .brand-publisher-group .lyft-logo {
+                height: 40px;
+            }
+        }
+    }
+}
+
+
+#bookARide {
+    .vertical-alignment-helper {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .vertical-align-center {
+        display: block;
+        vertical-align: middle;
+    }
+    .modal-header {
+        display: block;
+    }
+    .modal-header h4 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 700;
+        margin: 0;
+    }
+    .modal-header i {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color: #d5d4d3;
+    }
+    .modal-header i:hover {
+        color: #c0bebd;
+    }
+    .modal-header .brand-publisher-group {
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+    }
+    .brand-publisher-group h4 {
+        margin-right: 10px;
+    }
+    .brand-publisher-group .lyft-logo {
+        height: 29px;
+    }
+    .modal-body {
+        border-top: 1px solid #eae9e9;
+    }
+    .modal-body .modal-main-text {
+        padding-top: 10px;
+        line-height: 1.8em;
+    }
+    .price-estimate {
+        border-top: solid 1px #eae9e9;
+    }
+    .price-estimate p {
+        padding-top: 10px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .price-estimate h1 {
+        margin: 0;
+    } 
+    .button-group {
+        margin-top: 30px;
+    }
+    .lyft-button {
+        background-color: #ff00bf;
+        color: #fff;
+        border-radius: 2px;
+        border: none;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 0 10px;
+        outline: none;
+        height: 44px;
+    }
+    .lyft-button:hover {
+        background: #e500ac;
+    }
+    .add-padding {
+        padding: 13px 20px;
+    }
+    .apple-app-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/apple-store.c9dcada1.svg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 150px;
+        height: 45px;
+        border-radius: 8px;
+        margin-left: 10px;
+    }
+    .google-play-store-button {
+        background-image: url(https://cdn.lyft.net/brochure/images/google-play-badge.632169c6.png);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 150px;
+        height: 45px;
+        border-radius: 2px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #bookARide {
+        .vertical-alignment-helper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+        .vertical-align-center {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .modal-header h4 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .brand-publisher-group .lyft-logo {
+            height: 40px;
+        }
+    }
+}
+
+
+
+.location-panel {
+    position: absolute;
+    z-index: $aboveMapZIndex;
+    height: 114px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: #FFF;
+    overflow-x: auto;
+    box-shadow: 0px 3px 0px rgba(201, 190, 189, 0.5);
+    .navigation {
+        height: 44px;
+        width: 100%;
+        position: fixed;
+        .col-xs-4 {
+            p {
+                outline: none;
+            }
+        }
+        .col-xs-4:active,
+        .col-xs-4:focus,
+        .col-xs-4:hover,
+        .col-xs-4.active {
+            background: #ddd;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .location-panel {
+        width: 440px;
+        height: calc(100vh - 80px);
+        top: $marginFromTop + 20px;
+        right: 20px;
+        overflow: visible;
+        box-shadow: none;
+        background: transparent;
+        .navigation {
+            position: relative;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .location-panel {
+        width: 560px;
+        height: calc(100vh - 90px);
+        top: $marginFromTop + 30px;
+        right: 30px;
+    }
+}
+
+.navigation .col-xs-4 {
+    padding: 0;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+.location-panel .navigation p {
+    margin: 0;
+    font-weight: 700;
+    color: #2e2925;
+    font-size: 13px;
+}
+
+.location-panel .grid-list {
+    height: 70px;
+    min-width: 350%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+    .col-xs-3 {
+        padding: 0;
+        height: 70px;
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .logo-image-parent {
+            background: #2e2925;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                opacity: .9;
+            }
+        }
+        .logo-image-parent:hover {
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                outline: none;
+                opacity: 1;
+            }
+        }
+        .modal {
+            background: none;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .location-panel .grid-list {
+        height: auto;
+        max-height: 100vh;
+        min-width: 100%;
+        width: 100%;
+        overflow-y: visible;
+        overflow-x: visible;
+        padding-bottom: 135px;
+        position: relative;
+        .col-xs-3 {
+            height: 110px;
+            width: 25%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .location-panel .grid-list {
+        .col-xs-3 {
+            height: 140px;
+            width: 25%;
+        }
+    }
+}
+
+.location-holder {
+    position: absolute;
+    z-index: $aboveMapZIndex + 22;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    overflow: hidden;
+    .location-header {
+        padding: 15px;
+        display: flex;
+        position: fixed;
+        width: 100%;
+        background: white;
+        justify-content: space-between;
+        .location-header-info {
+            h5 {
+                margin: 0;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
+                color: #2e2925;
+            }
+            p {
+                font-family: Georgia, Times, "Times New Roman", serif;
+                color: #aba9a8;
+                font-size: 18px;
+                line-height: 30px;
+                margin: 0;
+            }
+        }
+        .location-header-close {
+            .close-location-modal {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+    }
+    .location-content-wrapper {
+        border-bottom: 1px solid #eae9e9;
+        margin-top: 100px;
+        max-height: 100vh;
+        overflow-y: scroll;
+        background: #fff;
+        width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 100px;
+        .location-main {
+            img {
+                border-bottom: 1px solid #eae9e9;
+                border-top: 1px solid #eae9e9;
+            }
+            p {
+                padding: 0 15px;
+                font-family: Georgia, Times, "Times New Roman", serif;
+                color: #2e2925;
+                font-size: 18px;
+                line-height: 30px;
+            }
+            .caption {
+                padding: 10px 0;
+                margin: 0 15px 10px;
+                font-size: 11px;
+                font-weight: 400;
+                color: #2e2925;
+                line-height: 16px;
+                font-family: 'Titillium Web', sans-serif;
+                border-bottom: 1px solid #eae9e9;
+            }
+        }
+        .location-footer {
+            padding: 0 15px;
+            margin-top: 15px;
+            .get-lyft {
+                border-top: 1px solid #eae9e9;
+                border-bottom: 1px solid #eae9e9;
+                p {
+                    font-size: 18px;
+                    font-weight: 800;
+                    font-family: 'Titillium Web', sans-serif;
+                    a {
+                        color: #FD1EBF;
+                        text-decoration: none;
+                    }
+                }
+                button {
+                    height: 44px;
+                    margin-bottom: 15px;
+                }
+            }
+            .social-media-links {
+                height: 61px;
+                display: flex;
+                align-items: center;
+                color: #aba9a8;
+                .link {
+                    display: inline-flex;
+                    width: 25%;
+                    align-items: center;
+                    border-right: 1px solid #eae9e9;
+                    padding-left: 5px;
+                    .fa {
+                        margin-right: 5px;
+                        margin-left: 5px;
+                    }
+                    a {
+                        color: #aba9a8;
+                        margin-bottom: 0;
+                        font-weight: 800;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .location-holder {
+        top: $marginFromTop + 20px;
+        right: 20px;
+        width: 440px;
+        height: calc(100vh - 80px);
+        z-index: $aboveMapZIndex;
+        overflow: visible;
+        .location-header {
+            padding: 25px 30px;
+            position: absolute;
+            width: 440px;
+            .location-header-info {
+                h5 {
+                    font-weight: 700;
+                    font-size: 28px;
+                    line-height: 34px;
+                }
+            }
+        }
+        .location-content-wrapper {
+            margin-top: 115px;
+            max-height: initial;
+            padding-bottom: 0;
+            overflow: visible;
+            .location-main {
+                p {
+                    padding: 0 30px;
+                    font-size: 18px;
+                    line-height: 30px;
+                }
+                .caption {
+                    padding: 10px 30px;
+                    padding-left: 0;
+                    margin: 0 30px 10px;
+                }
+            }
+            .location-footer {
+                padding: 0 30px;
+            }
+            .social-media-links {
+                .link {
+                    width: 17%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .location-holder {
+        top: $marginFromTop + 30px;
+        right: 30px;
+        width: 560px;
+        height: calc(100vh - 90px);
+        .location-header {
+            width: 560px;
+        }
+    }
+}
+
+.popupInfo {
+    display: flex;
+    padding: 15px;
+    .popupInfo-location {
+        width: 176px;
+        margin-right: 15px;
+        h5 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: #2e2925;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        p {
+            font-family: Georgia, Times, "Times New Roman", serif;
+            margin-top: 0;
+            font-size: 14px;
+            color: #aba9a8;
+            line-height: 20px;
+            margin-bottom: 12px;
+        }
+    }
+    .popupInfo-image {
+        width: 80px;
+        height: 80px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#map {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+footer {
+    position: fixed;
+    z-index: $aboveMapZIndex;
+    bottom: 134px;
+    left: 30px;
+    .social-media-icons {
+        cursor: pointer;
+        display: flex;
+        .icon-holder {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
+            a {
+                color: #fff;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        .icon-holder-facebook {
+            background: #34508F;
+            margin-right: 20px;
+        }
+        .icon-holder-twitter {
+            background: #4BA3EB;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    footer {
+        bottom: 20px;
+    }
+}
+
+.marker {
+    color: #fff !important;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
