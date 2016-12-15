@@ -152,12 +152,9 @@ angular.module('entertainmentAtlas')
                         lngEast = lng + 0.02;
                         lngWest = lng - 0.02;
                         corner1 = L.latLng(latNorth, lngEast),
-                            corner2 = L.latLng(latSouth, lngWest),
-                            bounds = L.latLngBounds(corner1, corner2);
-                        // At mobile screen widths, set paddingBottomRight = [0, 0]
-                        if ($('body').width() >= 1024) {
-                            paddingBottomRight = [600, 0];
-                        } else if ($('body').width() >= 768) {
+                        corner2 = L.latLng(latSouth, lngWest),
+                        bounds = L.latLngBounds(corner1, corner2);
+                        if ($('body').width() >= 768) {
                             paddingBottomRight = [700, 0];
                         } else {
                             paddingBottomRight = [150, 0];
