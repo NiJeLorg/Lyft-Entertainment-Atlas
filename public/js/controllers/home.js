@@ -97,7 +97,7 @@ angular.module('entertainmentAtlas')
         var L = window.L;
         var map = new L.Map('map');
         if ($('body').width() >= 768) {
-            map.setView([41.897022, -87.609100], 12);
+            map.setView([41.897022, -87.609100], 13);
         } else {
             map.setView([41.924688, -87.648754], 11);
         }
