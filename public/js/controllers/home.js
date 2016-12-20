@@ -25,7 +25,7 @@ angular.module('entertainmentAtlas')
             }
             // scroll navigation to the far left on mobile
             if ($('body').width() < 768) {
-                $('.grid-list').scrollLeft(0);
+                $('.location-panel').animate({scrollLeft: $('.grid-list').offset().left}, 800);
             }
         };
         $scope.filterByVenueType = function(item) {
@@ -70,7 +70,17 @@ angular.module('entertainmentAtlas')
         $scope.orderLyft = function() {
             if ($('body').width() < 768) {
                 var url = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
-                deeplink.open(url);
+                var iphoneurl = 'https://qa-visualizations.dnainfo.com/lyft_test/?lat=' + $scope.selectedLocation.gsx$latitude.$t + '&lng=' + $scope.selectedLocation.gsx$longitude.$t;
+                if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
+                    deeplink.open(url);
+                } else {
+                    try {
+                        window.open(iphoneurl, '_blank');
+                    } catch (e) {
+                        window.open('https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8', '_blank');
+                    }
+                }
+
             } else {
                 openLyftPriceEstimateModal();
             }
@@ -143,12 +153,9 @@ angular.module('entertainmentAtlas')
                         lngEast = lng + 0.02;
                         lngWest = lng - 0.02;
                         corner1 = L.latLng(latNorth, lngEast),
-                            corner2 = L.latLng(latSouth, lngWest),
-                            bounds = L.latLngBounds(corner1, corner2);
-                        // At mobile screen widths, set paddingBottomRight = [0, 0]
-                        if ($('body').width() >= 1024) {
-                            paddingBottomRight = [600, 0];
-                        } else if ($('body').width() >= 768) {
+                        corner2 = L.latLng(latSouth, lngWest),
+                        bounds = L.latLngBounds(corner1, corner2);
+                        if ($('body').width() >= 768) {
                             paddingBottomRight = [700, 0];
                         } else {
                             paddingBottomRight = [150, 0];
