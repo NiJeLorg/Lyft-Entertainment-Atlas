@@ -48,9 +48,17 @@ angular.module('entertainmentAtlas')
         $scope.openLocationModalAction = function(item) {
             $scope.openLocationModal = true;
             $scope.locationItem = item;
+            if ($('body').width() >= 768) {
+                // hide grid list
+                $('.grid-list').addClass('hidden');
+            }
         };
         $scope.closeLocationModalAction = function() {
             $scope.openLocationModal = false;
+            if ($('body').width() >= 768) {
+                // unhide grid list
+                $('.grid-list').removeClass('hidden');
+            }
         };
         $scope.openLocationPopup = function(location) {
             var leafletId = location.gsx$id.$t;
