@@ -134,7 +134,11 @@ angular.module('entertainmentAtlas')
                 var imagesUrl = 'https://editorial-chi.dnainfo.com/interactives/entertainment/img/';
                 var lyftButton, lyftUrl;
                 if ($('body').width() < 768) {
-                    lyftUrl = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
+                        lyftUrl = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.data[i].gsx$latitude.$t + '&destination[longitude]=' + $scope.data[i].gsx$longitude.$t;
+                    } else {
+                        lyftUrl = 'https://visualizations.dnainfo.com/lyft_test/?lat=' + $scope.data[i].gsx$latitude.$t + '&lng=' + $scope.data[i].gsx$longitude.$t;
+                    }
                     lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButtonMobile" data-url="'+lyftUrl+'">Book a ride!</a>';
                 } else {
                     lyftButton = '<a href="#" class="book-a-ride marker bookARideMapButton" data-id="' + i + '">Book a ride!</a>';
@@ -203,7 +207,15 @@ angular.module('entertainmentAtlas')
         });
 
         $(document).on('click', '.bookARideMapButtonMobile', function() {
-            deeplink.open(this.dataset.url);
+            if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
+                deeplink.open(this.dataset.url);
+            } else {
+                try {
+                    window.open(this.dataset.url, '_blank');
+                } catch (e) {
+                    window.open('https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8', '_blank');
+                }
+            }
         });
 
         $(document).on('click', '.bookARideMapButton', function() {
