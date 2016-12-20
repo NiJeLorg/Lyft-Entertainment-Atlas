@@ -73,11 +73,12 @@ angular.module('entertainmentAtlas')
                 if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
                     deeplink.open(url);
                 } else {
-                    try {
-                        window.open(url, '_blank');
-                    } catch (e) {
-                        window.open('https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8', '_blank');
-                    }
+                    window.open('https://qa-visualizations.dnainfo.com/lyft_test/');
+                    // try {
+                    //     window.open(url, '_blank');
+                    // } catch (e) {
+                    //     window.open('https://itunes.apple.com/us/app/lyft-on-demand-ridesharing/id529379082?mt=8', '_blank');
+                    // }
                 }
 
             } else {
