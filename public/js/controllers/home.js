@@ -78,7 +78,7 @@ angular.module('entertainmentAtlas')
         $scope.orderLyft = function() {
             if ($('body').width() < 768) {
                 var url = 'lyft://ridetype?id=lyft&partner=4ujGa8RbFc5n&destination[latitude]=' + $scope.selectedLocation.gsx$latitude.$t + '&destination[longitude]=' + $scope.selectedLocation.gsx$longitude.$t;
-                var iphoneurl = 'https://qa-visualizations.dnainfo.com/lyft_test/?lat=' + $scope.selectedLocation.gsx$latitude.$t + '&lng=' + $scope.selectedLocation.gsx$longitude.$t;
+                var iphoneurl = 'https://visualizations.dnainfo.com/lyft_test/?lat=' + $scope.selectedLocation.gsx$latitude.$t + '&lng=' + $scope.selectedLocation.gsx$longitude.$t;
                 if (!navigator.userAgent.toLowerCase().indexOf("iphone")) {
                     deeplink.open(url);
                 } else {
