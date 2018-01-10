@@ -52,7 +52,8 @@ gulp.task('watch&reload', function() {
     browserSync.init(null, {
         proxy: 'http://localhost:3000',
         port: 5000,
-        browser: 'google chrome'
+        browser: 'google chrome',
+        open: false
     });
     gulp.watch(paths.sassDirectory, ['sass2css']);
     gulp.watch(paths.pugDirectory, ['pug2html']);
